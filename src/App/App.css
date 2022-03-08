@@ -66,15 +66,8 @@
   align-items: center;
   margin-top: 100px;
 } */
-.search{
-  max-width: 50%;
-  padding-right: 80px;
-  margin-top: 16px;
-}
+
 .login-btn{
   background-color: white;
   color:#2874f0;
-}
-.nav{
-  color:#2874f0 ;
 }
