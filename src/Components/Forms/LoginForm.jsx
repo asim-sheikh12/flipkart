@@ -1,72 +1,95 @@
-import { Form, Input, Button, Checkbox } from 'antd';
-import { MailOutlined, LockOutlined } from '@ant-design/icons';
+import { Form, Input, Button, Checkbox } from "antd";
+import { useState } from "react";
+import "./LoginForm.css";
 
 export const LoginForm = () => {
+  const [email,setEmail] = useState();
+  const[input,setInput]=useState();
+  const [password,setPassword] = useState();
   const onFinish = (values) => {
-    console.log('Received values of form: ', values);
+    console.log("Received values of form: ", values);
   };
-
   return (
-      <div className="main-body">
-      
-    <Form
-      name="normal_login"
-      className="login-form" 
-      initialValues={{
-        remember: true,
-      }}
-      onFinish={onFinish}
-    >
-      <Form.Item
-        name="email"
-        // label="E-mail"
-        rules={[
-          {
-            type: 'email',
-            message: 'The input is not valid E-mail!',
-          },
-          {
-            required: true,
-            message: 'Please input your E-mail!',
-          },
-        ]}
+    <div className="main-body">
+      <img className="modalImage" src="/images/Login.png" />
+      <Form
+        name="normal_login"
+        className="login-form"
+        initialValues={{
+          remember: true,
+        }}
+        onFinish={onFinish}
       >
-        <Input prefix={<MailOutlined className="site-form-item-icon" />}
-          type="email"
-          placeholder="Email" />
-      </Form.Item>
-      <Form.Item
-        name="password"
-        rules={[
-          {
-            required: true,
-            message: 'Please input your Password!',
-          },
-        ]}
-      >
-        <Input
-          prefix={<LockOutlined className="site-form-item-icon" />}
-          type="password"
-          placeholder="Password"
-        />
-      </Form.Item>
-      <Form.Item>
-        <Form.Item name="remember" valuePropName="checked" noStyle>
-          <Checkbox>Remember me</Checkbox>
+      {console.log(typeof(email))}
+        <Form.Item
+          name="email"
+          rules={[
+            { 
+              type: "email",
+              message: "The input is not valid E-mail!",
+            },
+            {
+              required: true,
+              message: "Please enter valid Email ID/Mobile number",
+            },
+          ]}
+        >
+          <Input
+            type="email"
+            placeholder="Enter Email/Mobile Number"
+            bordered={false}
+            onChange={(e)=>setEmail(e.target.value)}
+          />
         </Form.Item>
-
-        <a className="login-form-forgot" href="">
-          Forgot password
+        <Form.Item
+          rules={[
+            {
+              required: true,
+              message: "",
+            },
+          ]}
+        >
+          <div className="inputPassword">
+            <Input
+              type="password"
+              placeholder="Enter Password"
+              bordered={false}
+            />
+            <a className="Forgot" href="">
+              Forgot?
+            </a>
+          </div>
+        </Form.Item>
+        <Form.Item>
+          <Form.Item
+            name="remember"
+            valuePropName="checked"
+            noStyle
+          ></Form.Item>
+        </Form.Item>
+        <Form.Item>
+          <div className="modalButtons">
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="login-form-button modalLogin-btn"
+            >
+              Log in
+            </Button>
+            <p className="or">OR</p>
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="login-form-button otp-btn"
+            >
+              Request OTP
+            </Button>
+          </div>
+        </Form.Item>
+        <a className="NewUser" href="#">
+          New to Flipkart? Create an account
         </a>
-      </Form.Item>
-
-      <Form.Item>
-        <Button type="primary" htmlType="submit" className="login-form-button">
-          Log in
-        </Button>
-        Or <a href="">register now!</a>
-      </Form.Item>
-    </Form>
+      </Form>
     </div>
   );
 };

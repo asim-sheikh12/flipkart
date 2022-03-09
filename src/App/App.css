@@ -36,36 +36,6 @@
     transform: rotate(360deg);
   }
 }
-/* .login-form {
-  max-width: 300px;
-}
- .login-form-forgot {
-  float: right;
-}
- .ant-col-rtl .login-form-forgot {
-  float: left;
-}
- .login-form-button {
-  width: 100%;
-}
-.login-form {
-  max-width: 300px;
-}
-.login-form-forgot {
-  float: right;
-}
-.ant-col-rtl .login-form-forgot {
-  float: left;
-}
-.login-form-button {
-  width: 100%;
-} */
-/* .main-body{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 100px;
-} */
 
 .login-btn{
   background-color: white;
