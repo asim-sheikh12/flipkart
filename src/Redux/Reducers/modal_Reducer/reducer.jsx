@@ -1,4 +1,4 @@
-import { OPEN_LOGIN_MODEL } from "../Actions/actonType";
+import { OPEN_LOGIN_MODEL } from "../../Actions/modal_Action/actonType";
 
 const initialState = {
   modalStatus: false,

@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import { Modal } from 'antd';
 import { useDispatch } from 'react-redux';
-import { openModal } from '../../Redux/Actions/action';
+import { openModal } from '../../Redux/Actions/modal_Action/action';
 import { LoginForm } from '../Forms/LoginForm';
 import './Modal.css'
 

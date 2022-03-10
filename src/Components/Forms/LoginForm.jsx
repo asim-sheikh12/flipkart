@@ -1,13 +1,21 @@
 import { Form, Input, Button, Checkbox } from "antd";
 import { useState } from "react";
 import "./LoginForm.css";
+import { loginUser } from "../../Redux/Actions/user_Login/userLoginAction";
+import { useDispatch } from "react-redux";
 
 export const LoginForm = () => {
-  const [email,setEmail] = useState();
-  const[input,setInput]=useState();
-  const [password,setPassword] = useState();
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values);
+  const [email,setEmail] = useState('');
+  const [password,setPassword] = useState('');
+  const dispatch = useDispatch();
+  
+  const onFinish = () => {
+        const userData = {
+          email,
+          password
+        }
+        dispatch(loginUser());
+        console.log(userData)
   };
   return (
     <div className="main-body">
@@ -16,7 +24,7 @@ export const LoginForm = () => {
         name="normal_login"
         className="login-form"
         initialValues={{
-          remember: true,
+          // remember: true,
         }}
         onFinish={onFinish}
       >
@@ -38,6 +46,7 @@ export const LoginForm = () => {
             type="email"
             placeholder="Enter Email/Mobile Number"
             bordered={false}
+            value={email}
             onChange={(e)=>setEmail(e.target.value)}
           />
         </Form.Item>
@@ -54,6 +63,8 @@ export const LoginForm = () => {
               type="password"
               placeholder="Enter Password"
               bordered={false}
+              value={password}
+              onChange={(e)=>setPassword(e.target.value)}
             />
             <a className="Forgot" href="">
               Forgot?

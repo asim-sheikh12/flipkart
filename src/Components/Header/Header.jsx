@@ -1,5 +1,6 @@
 import { Input, Button } from "antd";
 import { Menu, Dropdown } from "antd";
+import { Link } from "react-router-dom";
 import {
   DownOutlined,
   AudioOutlined,
@@ -15,7 +16,7 @@ import {
   GiftTwoTone,
 } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { openModal } from "../../Redux/Actions/action";
+import { openModal } from "../../Redux/Actions/modal_Action/action";
 import { LoginModal } from "../LoginModal/Modal";
 import { useEffect, useState } from "react";
 import "./Header.css";
@@ -24,46 +25,46 @@ const { Search } = Input;
 const loginMenu = (
   <Menu>
     <Menu.Item key="0">
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.antgroup.com"
-      >
+      <Link to="/register">
         <span className="moreMenu">
-          New Customer? <a href="#">Signup</a>
+          New Customer? <a>Signup</a>
         </span>
-      </a>
+    </Link>
     </Menu.Item>
     <Menu.Divider />
     <Menu.Item key="1">
       <UserOutlined className="moreMenuIcons" />
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.aliyun.com"
-      >
-        <span className="moreMenu">My Profile</span>
-      </a>
+   <Link to="/profile">
+        <span className="moreMenu">My Profile </span>
+       </Link>
     </Menu.Item>
     <Menu.Divider />
     <Menu.Item key="2">
       <PlusSquareTwoTone className="moreMenuIcons" />
+      <Link to="/plus">
       <span className="moreMenu">Flipkart Plus Zone</span>
+      </Link>
     </Menu.Item>
     <Menu.Divider />
     <Menu.Item key="3">
       <WalletTwoTone className="moreMenuIcons" />
+      <Link to="/orders">
       <span className="moreMenu">Orders</span>
+      </Link>
     </Menu.Item>
     <Menu.Divider />
     <Menu.Item key="4">
       <HeartTwoTone className="moreMenuIcons" />
+      <Link to="/wishlist">
       <span className="moreMenu">Wishlist</span>
+      </Link>
     </Menu.Item>
     <Menu.Divider />
     <Menu.Item key="5">
       <GiftTwoTone className="moreMenuIcons" />
+      <Link to="/rewards">
       <span className="moreMenu">Rewards</span>
+      </Link>
     </Menu.Item>
   </Menu>
 );
@@ -82,13 +83,9 @@ const menu = (
     <Menu.Divider />
     <Menu.Item key="1">
       <ShopFilled className="moreMenuIcons" />
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.aliyun.com"
-      >
+    <Link to='/register'>
         <span className="moreMenu">Sell on Flipkart</span>
-      </a>
+    </Link>
     </Menu.Item>
     <Menu.Divider />
     <Menu.Item key="2">
@@ -126,7 +123,7 @@ export const Headers = () => {
     <div className="header">
       {/* <Header className="nav"> */}
       <div className="logo">
-        <img className="logo" src="images/Flipkart.jpg" />
+       <Link to='/'><img className="logo" src="images/Flipkart.jpg" /></Link>
       </div>
       <div className="header__second">
         <Search
@@ -140,7 +137,7 @@ export const Headers = () => {
       </div>
       <Dropdown
         overlay={loginMenu}
-        placement="bottomLeft"
+        placement="bottom"
         arrow={{ pointAtCenter: true }}
       >
         <Button
@@ -154,7 +151,7 @@ export const Headers = () => {
       {isOpen && <LoginModal data={isOpen} />}
       <Dropdown
         overlay={menu}
-        placement="bottomLeft"
+        placement="bottom"
         arrow={{ pointAtCenter: true }}
       >
         <a
