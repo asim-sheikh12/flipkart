@@ -6,8 +6,8 @@ import { NavBar2 } from '../../Components/NavBar2/NavBar2'
 export const Register = () => {
   return (
     <div>
-    <Headers/>
-    <NavBar2/>
+    {/* <Headers/>
+    <NavBar2/> */}
     <RegisterForm/>
     </div>
   )

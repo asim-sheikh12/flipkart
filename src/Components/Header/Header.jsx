@@ -21,15 +21,21 @@ import { LoginModal } from "../LoginModal/Modal";
 import { useEffect, useState } from "react";
 import "./Header.css";
 import { Cart } from "../../Pages/Cart/Cart";
-const { Search } = Input;
+
+export const Headers = () => {
+  const [isOpen, setisOpen] = useState(false);
+  const appDispatch = useDispatch();
+  const modalStatus = useSelector((state) => state.reducer.modalStatus);
+  useEffect(() => {
+    setisOpen(modalStatus);
+  }, [modalStatus]);
+  const { Search } = Input;
 const loginMenu = (
   <Menu>
     <Menu.Item key="0">
-      <Link to="/register">
         <span className="moreMenu">
           New Customer? <a>Signup</a>
         </span>
-    </Link>
     </Menu.Item>
     <Menu.Divider />
     <Menu.Item key="1">
@@ -112,13 +118,6 @@ const suffix = (
     }}
   />
 );
-export const Headers = () => {
-  const [isOpen, setisOpen] = useState(false);
-  const appDispatch = useDispatch();
-  const modalStatus = useSelector((state) => state.reducer.modalStatus);
-  useEffect(() => {
-    setisOpen(modalStatus);
-  }, [modalStatus]);
   return (
     <div className="header">
       {/* <Header className="nav"> */}
