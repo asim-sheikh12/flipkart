@@ -1,4 +1,39 @@
-.Card{
+.card{
     display: flex;
-    justify-content: space-between;
+    margin: 40px;
+    justify-content: center;
+   align-items: center;
+}
+.products{
+ display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.addToCart{
+    background-color: rgb(255,174,66);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+   
+}
+.btn{
+    display: flex;
+     justify-content: center;
+}
+.fimage{
+    margin: 10px;
+}
+.productImages:hover{
+    /* height: 280px; */
+   width: 250px;
+}
+/* .card:hover img{
+  width: 80%;
+} */
+.card::before {
+  transform: rotate(-40deg);
+  align-items: center;
+  transition: 2s;
 }

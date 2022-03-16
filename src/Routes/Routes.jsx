@@ -13,14 +13,15 @@ export const Routing = () => {
   return (
     <div>
         <Router>
-<Routes><Route exact path='/' element={<App/>}/></Routes>       
-<Routes><Route exact path='/profile' element={<Profile/>}/></Routes>
-<Routes><Route exact path='/plus' element={<FlipkartPlus/>}/></Routes>
-<Routes><Route exact path='/wishlist' element={<Wishlist/>}/></Routes>
-<Routes><Route exact path='/rewards' element={<Rewards/>}/></Routes>
-<Routes><Route exact path='/giftcard' element={<GiftCard/>}/></Routes>
-<Routes><Route exact path='/orders' element={<Orders/>}/></Routes>
-<Routes><Route exact path='/register' element={<Register/>}/></Routes>
+    
+<Routes><Route  path='/profile' element={<Profile/>}/></Routes>
+<Routes><Route  path='/plus' element={<FlipkartPlus/>}/></Routes>
+<Routes><Route  path='/wishlist' element={<Wishlist/>}/></Routes>
+<Routes><Route  path='/rewards' element={<Rewards/>}/></Routes>
+<Routes><Route  path='/giftcard' element={<GiftCard/>}/></Routes>
+<Routes><Route  path='/orders' element={<Orders/>}/></Routes>
+<Routes><Route  path='/register' element={<Register/>}/></Routes>
+<Routes><Route  exact path='/'  element={<App/>}/></Routes>   
         </Router>
     </div>
   )

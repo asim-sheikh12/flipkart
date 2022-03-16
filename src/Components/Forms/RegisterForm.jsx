@@ -1,5 +1,4 @@
-import { isDisabled } from "@testing-library/user-event/dist/utils";
-import { Button, Input } from "antd";
+import { Input,Select,Form } from "antd";
 import TextArea from "antd/lib/input/TextArea";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -107,6 +106,19 @@ export const RegisterForm = () => {
           </div>
           <div>
             <label>
+              <Select
+              placeholder='Role'
+        style={{
+          width: 200,
+        }}
+      >
+        <option value="Customer">Customer</option>
+        <option value="Seller">Seller</option>
+      </Select>
+            </label>
+          </div>
+          <div>
+            <label>
               <Input
                 name="password"
                 placeholder="Enter Your Password"
@@ -133,11 +145,6 @@ export const RegisterForm = () => {
         </form>
       </div>
       <div>
-        {/* <h2 className="h2">
-          Sell to millions of customers on Flipkart and Shopsy, Right from your
-          doorstep!
-        </h2>
-        <h3>All you need to sell on Flipkart and Shopsy is</h3> */}
         <img className="image" src="/images/seller.png"/>
       </div>
     </>
