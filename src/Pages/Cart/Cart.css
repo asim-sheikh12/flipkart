@@ -14,6 +14,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 20px;
+    margin-top: 20px;
    
 }
 .drawerImage{
@@ -27,4 +29,36 @@
 }
 .text{
     font-weight: 700;
+}
+.titleBtn{
+    display: flex;
+    flex-direction: column
+}
+.removeBtn{
+    display: flex;
+    width: 30px;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+}
+.addBtn{
+    display: flex;
+    width: 30px;
+    align-items: center;
+    justify-content: center;
+    margin: 8px;
+}
+.removeBtn:hover{
+color: red;
+border-color: red;
+
+}
+.addBtn:hover{
+color: rgb(10, 95, 10);
+border-color: rgb(10, 95, 10);
+
+}
+.actions{
+    display: flex;
+    align-items: center;
 }

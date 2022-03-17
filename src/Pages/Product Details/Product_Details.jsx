@@ -1,4 +1,4 @@
-import { Button, Card, Col, Row } from "antd";
+import { Button, Card, notification } from "antd";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getProductDetails } from "../../Redux/Actions/getProduct/getProductActions";
@@ -12,12 +12,17 @@ export const Product_Details = () => {
   const dispatch = useDispatch();
   const { Meta } = Card;
   const fetchData = useSelector(state=>state.getProductReducer.productData)
-  const cartData = useSelector(state=>state.cartReducer.productList)
   console.log(fetchData)
-  console.log("CartData>>>>",cartData)
   useEffect( () => {
       dispatch(getProductDetails());
   },[]);
+  const openNotificationWithIcon = (type,placement) => {
+  notification[type]({
+    message: 'Item added successfully!',
+    placement,
+   
+  });
+};
   return (
     <div className="products">
       {fetchData.map((item, index) => (
@@ -30,7 +35,7 @@ export const Product_Details = () => {
     <h2><Meta title={item.title} description={`₹ ${item.price}`}/></h2>
     <img className="fimage" src="/images/fassured.png" height='30' width='150'/>
     <div className="btn">
-    <Button className="addToCart" onClick={()=>dispatch(AddToCart(item))}>Add To Cart</Button>
+    <Button className="addToCart" onClick={()=>{openNotificationWithIcon('success','bottomRight');dispatch(AddToCart(item))}}>Add To Cart</Button>
     </div>
       </Card>
       </div>

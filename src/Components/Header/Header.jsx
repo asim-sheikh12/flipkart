@@ -81,7 +81,7 @@ const menu = (
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href="https://www.antgroup.com"
+        href="#"
       >
         <span className="moreMenu">Notification Preferences</span>
       </a>
