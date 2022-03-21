@@ -1,0 +1,13 @@
+.site-card-border-less-wrapper {
+  padding: 30px;
+  background: #ececec;
+}
+.breadcrumb{
+margin: 15px;
+}
+.card1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+}

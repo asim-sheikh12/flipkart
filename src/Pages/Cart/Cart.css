@@ -62,3 +62,9 @@ border-color: rgb(10, 95, 10);
     display: flex;
     align-items: center;
 }
+.inputQuantity
+{
+width: 20px;
+text-align: center;
+border: none;
+}

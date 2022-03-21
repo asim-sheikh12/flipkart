@@ -11,13 +11,13 @@ export const DeleteFromCart = (id) => {
     payload: id,
   };
 };
-export const Increment= (id) => {
+export const increment= (id) => {
   return {
     type: INCREMENT,
     payload: id,
   };
 };
-export const Decrement = (id) => {
+export const decrement = (id) => {
   return {
     type: DECREMENT,
     payload: id,

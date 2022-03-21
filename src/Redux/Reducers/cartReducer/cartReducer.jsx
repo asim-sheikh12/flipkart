@@ -1,10 +1,10 @@
 import {
   ADD_TO_CART,
+  DECREMENT,
   DELETE_FROM_CART,
   INCREMENT,
 } from "../../Actions/cartActions/cartActionType";
 const initialState = [];
-const itemData =[]
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_CART:
@@ -18,16 +18,27 @@ const cartReducer = (state = initialState, action) => {
       const newList = state.filter((elem) => elem.id !== id);
       return [...newList];
       break;
-    case INCREMENT:
-      console.log(action.payload)
-      
-      const itemData = state.filter((elem)=>
-      { 
-       return elem.id===action.payload
+    case INCREMENT:      
+      state.map((curElem)=>{
+        if(curElem.id===action.payload){
+          curElem.quantity = curElem.quantity + 1;
+          return {...curElem}
+        }
+        return curElem;
       })
-  
-      return[...state]
-      
+      return [...state]
+      break;
+      case DECREMENT:
+          const updatedCart = state.map((curElem)=>{
+        if(curElem.id===action.payload){
+          curElem.quantity = curElem.quantity - 1;
+          return {...curElem}
+        }
+        return curElem;
+      }).filter((curElem)=>{
+        return curElem.quantity !== 0;
+      })
+      return [...updatedCart]
     default:
       return state;
   }

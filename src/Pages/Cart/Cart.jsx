@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { PlusOutlined,MinusOutlined } from "@ant-design/icons";
 import { Drawer, Button, Badge,notification} from "antd";
-import { DeleteFromCart,Increment } from "../../Redux/Actions/cartActions/cartActions";
+import { DeleteFromCart,increment,decrement } from "../../Redux/Actions/cartActions/cartActions";
 import "./Cart.css";
 export const Cart = () => {
   const [visible, setVisible] = useState(false);
@@ -14,6 +14,7 @@ export const Cart = () => {
   const onClose = () => {
     setVisible(false);
   };
+  const toatalItems = cartData.reduce((total, item) => item.quantity + total, 0)
 
   return (
     <>
@@ -30,7 +31,7 @@ export const Cart = () => {
         onClose={onClose}
         visible={visible}
       >
-        <h2>You have {cartData.length} items in cart</h2>
+        <h2>You have {toatalItems} items in cart</h2>
         
         {cartData.map((item, index) => (
           <div className="cartDrawerItems" key={index}>
@@ -39,11 +40,11 @@ export const Cart = () => {
               {item.title} : ₹{item.price}
             </p>
             <div className="actions">
-             <Button className="removeBtn" onClick={() =>dispatch(DeleteFromCart(item.id))}>
+             <Button className="removeBtn" onClick={() =>dispatch(decrement(item.id))}>
                <MinusOutlined/>
               </Button>
-              {item.quantity}
-            <Button className="addBtn" onClick={()=>dispatch(Increment(item.id))}>
+             <input type='text' value={item.quantity} disabled className="inputQuantity"/>
+            <Button className="addBtn" onClick={()=>dispatch(increment(item.id))}>
                 <PlusOutlined />
               </Button>
               </div>
@@ -51,11 +52,14 @@ export const Cart = () => {
             <div className="imgDiv">
               <img className="drawerImage" src={item.imgUrl} height="100px" />
             </div>
+             <Button className="removeAll" onClick={() =>dispatch(DeleteFromCart(item.id))}>
+              Remove Item
+              </Button>
           </div>
         ))}
         <hr />
         <h2>
-          Total : ₹{cartData.reduce((total, item) => item.price + total, 0)}
+          Total : ₹{cartData.reduce((total, item) => item.price * item.quantity + total, 0)}
         </h2>
         <hr />
       </Drawer>
