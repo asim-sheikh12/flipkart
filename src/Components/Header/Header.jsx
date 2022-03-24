@@ -54,8 +54,8 @@ const loginMenu = (
     <Menu.Divider />
     <Menu.Item key="3">
       <WalletTwoTone className="moreMenuIcons" />
-      <Link to="/orders">
-      <span className="moreMenu">Orders</span>
+      <Link to="/allAddresses">
+      <span className="moreMenu">Address</span>
       </Link>
     </Menu.Item>
     <Menu.Divider />
@@ -120,7 +120,6 @@ const suffix = (
 );
   return (
     <div className="header">
-      {/* <Header className="nav"> */}
       <div className="logo">
        <Link to='/'><img className="logo" src="images/Flipkart.jpg" /></Link>
       </div>
@@ -161,10 +160,6 @@ const suffix = (
         </a>
       </Dropdown>
       <Cart/>
-      {/* <div className="addToCart"> */}
-      {/* <img className="cartIcon" src="/images/cart.png" />
-      <span className="cart">Cart</span> */}
-      {/* </div> */}
     </div>
   );
 };

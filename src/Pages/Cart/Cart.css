@@ -68,3 +68,14 @@ width: 20px;
 text-align: center;
 border: none;
 }
+.cartRemove{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.removeAll{
+    border: none;
+}
+.removeAll:hover{
+    color: red;
+}

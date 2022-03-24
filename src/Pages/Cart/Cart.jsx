@@ -49,12 +49,14 @@ export const Cart = () => {
               </Button>
               </div>
               </div>
+              <div className="cartRemove">
             <div className="imgDiv">
               <img className="drawerImage" src={item.imgUrl} height="100px" />
             </div>
              <Button className="removeAll" onClick={() =>dispatch(DeleteFromCart(item.id))}>
               Remove Item
               </Button>
+              </div>
           </div>
         ))}
         <hr />
