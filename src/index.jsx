@@ -1,14 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from '../src/App/App';
+import "antd/dist/antd.css";
+import { PersistGate } from 'redux-persist/integration/react'
 import {Provider} from 'react-redux';
-import Store from './Redux/Store/Store'
+import { store,persistor } from './Redux/Store/Store';
 import { Routing } from './Routes/Routes';
 
 ReactDOM.render(
-  <Provider store={Store}>
+  <Provider store={store}>
+  <PersistGate loading={null} persistor={persistor}>
     <Routing />
+  </PersistGate>
     </Provider>
  ,  
   document.getElementById('root')

@@ -4,7 +4,8 @@ import {
   DELETE_FROM_CART,
   INCREMENT,
 } from "../../Actions/cartActions/cartActionType";
-const initialState = [];
+const initialState = [
+];
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_CART:
@@ -39,6 +40,7 @@ const cartReducer = (state = initialState, action) => {
         return curElem.quantity !== 0;
       })
       return [...updatedCart]
+      break;
     default:
       return state;
   }

@@ -4,8 +4,10 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
+    "@blacklab/react-image-magnify": "^3.4.1",
     "antd": "^4.19.1",
     "axios": "^0.26.1",
+    "dotenv": "^10.0.0",
     "formik": "^2.2.9",
     "formik-antd": "^2.0.4",
     "react": "^17.0.2",
@@ -14,6 +16,7 @@
     "react-router-dom": "^6.2.2",
     "react-scripts": "5.0.0",
     "redux": "^4.1.2",
+    "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.1",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"

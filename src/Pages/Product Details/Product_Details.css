@@ -1,5 +1,6 @@
 .card{
     display: flex;
+    flex-direction: column;
     margin: 40px;
     justify-content: center;
    align-items: center;
@@ -20,20 +21,12 @@
 }
 .btn{
     display: flex;
+    margin-bottom: 20px;
      justify-content: center;
 }
 .fimage{
     margin: 10px;
 }
-.productImages:hover{
-    /* height: 280px; */
-   width: 250px;
-}
-/* .card:hover img{
-  width: 80%;
-} */
-.card::before {
-  transform: rotate(-40deg);
-  align-items: center;
-  transition: 2s;
+.cardContent{
+    max-height: 550px;
 }

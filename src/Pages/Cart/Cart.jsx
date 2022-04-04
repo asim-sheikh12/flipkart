@@ -59,9 +59,8 @@ export const Cart = () => {
               </div>
           </div>
         ))}
-        <hr />
         <h2>
-          Total : ₹{cartData.reduce((total, item) => item.price * item.quantity + total, 0)}
+          {cartData.length>0 && (<><hr/>Total : ₹{ cartData.reduce((total, item) => item.price * item.quantity + total, 0)}</>)}
         </h2>
         <hr />
       </Drawer>

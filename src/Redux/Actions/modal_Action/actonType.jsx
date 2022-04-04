@@ -1,1 +1,2 @@
 export const OPEN_LOGIN_MODEL = "OPEN_LOGIN_MODEL";
+export const OPEN_SIGNUP_MODEL = "OPEN_SIGNUP_MODEL";

@@ -1,8 +1,9 @@
 import { Form, Input, Button, Checkbox } from "antd";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./LoginForm.css";
 import { loginUser } from "../../Redux/Actions/user_Login/userLoginAction";
 import { useDispatch } from "react-redux";
+import { openModal,signupModal } from "../../Redux/Actions/modal_Action/action";
 
 export const LoginForm = () => {
   const [formData, setformData] = useState({
@@ -46,6 +47,10 @@ export const LoginForm = () => {
     }
     return errors;
   };
+   const Modal = () => {
+      dispatch(openModal(false))
+      dispatch(signupModal(true))
+  }
   return (
     <div className="main-body">
       <img className="modalImage" src="/images/Login.png" />
@@ -112,7 +117,7 @@ export const LoginForm = () => {
             </Button>
           </div>
         </Form.Item>
-        <a className="NewUser" href="#">
+        <a className="NewUser" onClick={()=>Modal()}>
           New to Flipkart? Create an account
         </a>
       </Form>

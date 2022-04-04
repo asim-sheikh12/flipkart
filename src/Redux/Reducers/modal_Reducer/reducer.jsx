@@ -1,14 +1,20 @@
-import { OPEN_LOGIN_MODEL } from "../../Actions/modal_Action/actonType";
+import { OPEN_LOGIN_MODEL,OPEN_SIGNUP_MODEL } from "../../Actions/modal_Action/actonType";
 
 const initialState = {
-  modalStatus: false,
+  LoginmodalStatus: false,
+  SignUpmodalStatus: false,
 };
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case OPEN_LOGIN_MODEL:
       return {
         ...state,
-        modalStatus: action.status,
+        LoginmodalStatus: action.status,
+      };
+      case OPEN_SIGNUP_MODEL:
+      return {
+        ...state,
+        SignUpmodalStatus: action.status,
       };
     default:
       return state;

@@ -16,112 +16,133 @@ import {
   GiftTwoTone,
 } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { openModal } from "../../Redux/Actions/modal_Action/action";
+import {
+  openModal,
+  signupModal,
+} from "../../Redux/Actions/modal_Action/action";
 import { LoginModal } from "../LoginModal/Modal";
+import { SignupModal } from "../SignupModal/SignupModal";
 import { useEffect, useState } from "react";
 import "./Header.css";
 import { Cart } from "../../Pages/Cart/Cart";
 
 export const Headers = () => {
   const [isOpen, setisOpen] = useState(false);
+  const [signUpisOpen, setSignUpisOpen] = useState(false);
+  const userData = useSelector((state) =>
+    console.log(state.userReducer.userData)
+  );
   const appDispatch = useDispatch();
-  const modalStatus = useSelector((state) => state.reducer.modalStatus);
+  const LoginmodalStatus = useSelector(
+    (state) => state.reducer.LoginmodalStatus
+  );
+  const SignUpmodalStatus = useSelector(
+    (state) => state.reducer.SignUpmodalStatus
+  );
   useEffect(() => {
-    setisOpen(modalStatus);
-  }, [modalStatus]);
+    setisOpen(LoginmodalStatus);
+    setSignUpisOpen(SignUpmodalStatus);
+  }, [LoginmodalStatus, SignUpmodalStatus]);
   const { Search } = Input;
-const loginMenu = (
-  <Menu>
-    <Menu.Item key="0">
-        <span className="moreMenu">
-          New Customer? <a>Signup</a>
-        </span>
-    </Menu.Item>
-    <Menu.Divider />
-    <Menu.Item key="1">
-      <UserOutlined className="moreMenuIcons" />
-   <Link to="/profile">
-        <span className="moreMenu">My Profile </span>
-       </Link>
-    </Menu.Item>
-    <Menu.Divider />
-    <Menu.Item key="2">
-      <PlusSquareTwoTone className="moreMenuIcons" />
-      <Link to="/plus">
-      <span className="moreMenu">Flipkart Plus Zone</span>
-      </Link>
-    </Menu.Item>
-    <Menu.Divider />
-    <Menu.Item key="3">
-      <WalletTwoTone className="moreMenuIcons" />
-      <Link to="/allAddresses">
-      <span className="moreMenu">Address</span>
-      </Link>
-    </Menu.Item>
-    <Menu.Divider />
-    <Menu.Item key="4">
-      <HeartTwoTone className="moreMenuIcons" />
-      <Link to="/wishlist">
-      <span className="moreMenu">Wishlist</span>
-      </Link>
-    </Menu.Item>
-    <Menu.Divider />
-    <Menu.Item key="5">
-      <GiftTwoTone className="moreMenuIcons" />
-      <Link to="/rewards">
-      <span className="moreMenu">Rewards</span>
-      </Link>
-    </Menu.Item>
-  </Menu>
-);
-const menu = (
-  <Menu>
-    <Menu.Item key="0">
-      <BellFilled className="moreMenuIcons" />
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="#"
-      >
-        <span className="moreMenu">Notification Preferences</span>
-      </a>
-    </Menu.Item>
-    <Menu.Divider />
-    <Menu.Item key="1">
-      <ShopFilled className="moreMenuIcons" />
-    <Link to='/register'>
-        <span className="moreMenu">Sell on Flipkart</span>
-    </Link>
-    </Menu.Item>
-    <Menu.Divider />
-    <Menu.Item key="2">
-      <QuestionCircleFilled className="moreMenuIcons" />
-      <span className="moreMenu">24X7 Customer Care</span>
-    </Menu.Item>
-    <Menu.Divider />
-    <Menu.Item key="3">
-      <RiseOutlined className="moreMenuIcons" />
-      <span className="moreMenu">Advertise</span>
-    </Menu.Item>
-    <Menu.Divider />
-    <Menu.Item key="4">
-      <DownloadOutlined className="moreMenuIcons" />
-      <span className="moreMenu">Download App</span>
-    </Menu.Item>
-  </Menu>
-);
-const suffix = (
-  <AudioOutlined
-    style={{
-      fontSize: 16,
-      color: "#1890ff",
-    }}
-  />
-);
+  const loginMenu = (
+    <>
+      <Menu>
+        <Menu.Item key="0">
+          <span className="moreMenu menu1">
+            New Customer?
+            <button
+              className="signUp"
+              onClick={() => appDispatch(signupModal(!signUpisOpen))}
+            >
+              {" "}
+              Signup
+            </button>
+          </span>
+        </Menu.Item>
+        <Menu.Divider />
+        <Menu.Item key="1">
+          <UserOutlined className="moreMenuIcons" />
+          <Link to="/profile">
+            <span className="moreMenu">My Profile </span>
+          </Link>
+        </Menu.Item>
+        <Menu.Divider />
+        <Menu.Item key="2">
+          <PlusSquareTwoTone className="moreMenuIcons" />
+          <Link to="/plus">
+            <span className="moreMenu">Flipkart Plus Zone</span>
+          </Link>
+        </Menu.Item>
+        <Menu.Divider />
+        <Menu.Item key="3">
+          <WalletTwoTone className="moreMenuIcons" />
+          <Link to="/allAddresses">
+            <span className="moreMenu">Address</span>
+          </Link>
+        </Menu.Item>
+        <Menu.Divider />
+        <Menu.Item key="4">
+          <HeartTwoTone className="moreMenuIcons" />
+          <Link to="/wishlist">
+            <span className="moreMenu">Wishlist</span>
+          </Link>
+        </Menu.Item>
+        <Menu.Divider />
+        <Menu.Item key="5">
+          <GiftTwoTone className="moreMenuIcons" />
+          <Link to="/rewards">
+            <span className="moreMenu">Rewards</span>
+          </Link>
+        </Menu.Item>
+      </Menu>
+    </>
+  );
+  const menu = (
+    <Menu>
+      <Menu.Item key="0">
+        <BellFilled className="moreMenuIcons" />
+        <a target="_blank" rel="noopener noreferrer" href="#">
+          <span className="moreMenu">Notification Preferences</span>
+        </a>
+      </Menu.Item>
+      <Menu.Divider />
+      <Menu.Item key="1">
+        <ShopFilled className="moreMenuIcons" />
+        <Link to="/register">
+          <span className="moreMenu">Sell on Flipkart</span>
+        </Link>
+      </Menu.Item>
+      <Menu.Divider />
+      <Menu.Item key="2">
+        <QuestionCircleFilled className="moreMenuIcons" />
+        <span className="moreMenu">24X7 Customer Care</span>
+      </Menu.Item>
+      <Menu.Divider />
+      <Menu.Item key="3">
+        <RiseOutlined className="moreMenuIcons" />
+        <span className="moreMenu">Advertise</span>
+      </Menu.Item>
+      <Menu.Divider />
+      <Menu.Item key="4">
+        <DownloadOutlined className="moreMenuIcons" />
+        <span className="moreMenu">Download App</span>
+      </Menu.Item>
+    </Menu>
+  );
+  const suffix = (
+    <AudioOutlined
+      style={{
+        fontSize: 16,
+        color: "#1890ff",
+      }}
+    />
+  );
   return (
     <div className="header">
       <div className="logo">
-       <Link to='/'><img className="logo" src="images/Flipkart.jpg" /></Link>
+        <Link to="/">
+          <img className="logo" src="images/Flipkart.jpg" />
+        </Link>
       </div>
       <div className="header__second">
         <Search
@@ -147,6 +168,7 @@ const suffix = (
         </Button>
       </Dropdown>
       {isOpen && <LoginModal data={isOpen} />}
+      {signUpisOpen && <SignupModal data={signUpisOpen} />}
       <Dropdown
         overlay={menu}
         placement="bottom"
@@ -159,7 +181,7 @@ const suffix = (
           More <DownOutlined />
         </a>
       </Dropdown>
-      <Cart/>
+      <Cart />
     </div>
   );
 };
