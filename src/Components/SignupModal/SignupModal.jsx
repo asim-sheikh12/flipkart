@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Modal } from "antd";
-import { useDispatch, useSelector } from "react-redux";
-import { openModal } from "../../Redux/Actions/modal_Action/action";
-import { LoginForm } from "../Forms/LoginForm";
-import "./Modal.css";
+import { useDispatch } from "react-redux";
+import { signupModal } from "../../Redux/Actions/modal_Action/action";
+import "./SignupModal.css";
+import { SignupForm } from "../Forms/SinupForm";
 
-export const LoginModal = ({ data }) => {
+export const SignupModal = ({ data }) => {
   const [visible, setVisible] = useState(data);
   const appDispatch = useDispatch();
   return (
@@ -15,14 +15,14 @@ export const LoginModal = ({ data }) => {
         centered
         visible={visible}
         onCancel={() => {
-          appDispatch(openModal(data));
+          appDispatch(signupModal(false));
           setVisible(false);
         }}
         width={600}
         height={500}
         footer={null}
       >
-        <LoginForm />
+        <SignupForm />
       </Modal>
     </>
   );

@@ -1,24 +1,21 @@
 import { Input,Select,Form } from "antd";
-import TextArea from "antd/lib/input/TextArea";
+import { loginSeller } from "../../Redux/Actions/sellerActions/sellerLogin";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./RegisterForm.css";
+import { useDispatch } from "react-redux";
 export const RegisterForm = () => {
   const [formData, setFormData] = useState({
-    fname: "",
-    lastname: "",
+    fullName: "",
     email: "",
     phone: "",
-    address: "",
-    role: "",
     password: "",
   });
+  const dispatch = useDispatch()
   const [val, setVal] = useState("");
   useEffect(() => {
     document.body.style.backgroundColor = "rgb(0, 120, 212)";
   });
-  const [errors, setErrors] = useState({});
-
   const handleOnChange = (e) => {
     setFormData({
       ...formData,
@@ -29,6 +26,10 @@ export const RegisterForm = () => {
     formData.phone = val;
     e.preventDefault();
     console.log(formData);
+      if({...formData})
+    {
+      dispatch(loginSeller(formData))
+    }
   };
   const OTP = () => {
     console.log("OTP BUTTON");
@@ -46,21 +47,9 @@ export const RegisterForm = () => {
           <div>
             <label>
               <Input
-                name="fname"
-                placeholder="Enter Your First Name"
-                value={formData.fname}
-                type="text"
-                onChange={handleOnChange}
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              <Input
-                name="lastname"
-                autoComplete="off"
-                placeholder="Enter Your Last Name"
-                value={formData.lastname}
+                name="fullName"
+                placeholder="Enter Your Full Name"
+                value={formData.fullName}
                 type="text"
                 onChange={handleOnChange}
               />
@@ -106,34 +95,10 @@ export const RegisterForm = () => {
           </div>
           <div>
             <label>
-              <Select
-              placeholder='Role'
-        style={{
-          width: 200,
-        }}
-      >
-        <option value="Customer">Customer</option>
-        <option value="Seller">Seller</option>
-      </Select>
-            </label>
-          </div>
-          <div>
-            <label>
               <Input
                 name="password"
                 placeholder="Enter Your Password"
                 value={formData.password}
-                type="password"
-                onChange={handleOnChange}
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              <TextArea
-                name="address"
-                placeholder="Enter Your Address"
-                value={formData.address}
                 type="password"
                 onChange={handleOnChange}
               />

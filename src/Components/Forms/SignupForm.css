@@ -56,7 +56,7 @@
   margin-left: 20px;
   line-height: 180%;
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 40%);
-  margin-top: 16px;
+  margin-top: 1px;
 }
 .modalLogin-btn {
   background: #fb641b;
@@ -67,19 +67,11 @@
   border: none;
   color: #fff;
 }
-
 .modalButtons {
   display: inline-block;
   justify-content: center;
   width: 60%;
   vertical-align: top;
-}
-.ant-btn-primary:hover{
-  background-color: #fb641b ;
-}
-.ant-btn-primary:focus{
-    background-color: #fb641b ;
-
 }
 .or{
   text-align: center;
@@ -97,4 +89,13 @@
   color: red;
   font-size: 11px;
   text-align: center;
+}
+.inputBox{
+  margin: 15px;
+}
+.terms{
+ text-align: center;
+ margin-left: 15px;
+ margin-top: 20px;
+ margin-bottom: 20px;
 }

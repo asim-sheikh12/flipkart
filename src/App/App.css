@@ -37,7 +37,13 @@
   }
 }
 
-.login-btn{
+.login-btn {
   background-color: white;
-  color:#2874f0;
+  color: #2874f0;
+}
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -50px 0px 0px -50px;
 }

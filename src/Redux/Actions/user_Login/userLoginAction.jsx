@@ -1,21 +1,21 @@
-import { USER_LOGIN } from "./userLogin";
+import { LOGIN_SUCCESS,LOGIN_FAILURE,LOGIN_PENDING } from "./userLogin";
+import { openModal } from "../modal_Action/action";
 import axios from "axios";
 
 export const loginUser = (formData) => async (dispatch) => {
-    const {email,password} = formData
-//   const result = await axios.post(
-//     "https://soft-stingray-76.loca.lt/api/v1/seller/login"
-//   );
-   const result = await axios({
-  method: 'post',
-  url: "http://localhost:5000/api/v1/auth/login",
-  headers: {
-
-  }, 
-  data: {
-    email,
-    password
-  }
-})
-dispatch({ type: USER_LOGIN, payload: result });
+  await dispatch({ type: LOGIN_PENDING, payload: true }) 
+  await axios
+    .post("https://polite-rabbit-27.loca.lt/api/user_login", formData)
+    .then(async(res) => {
+      console.log("response",res.data.data);
+      localStorage.setItem("Token",res.data.data.token)
+      await dispatch({ type: LOGIN_SUCCESS, payload: res.data.data });
+      await dispatch({ type: LOGIN_PENDING, payload: false });
+      await dispatch(openModal(false));
+    })
+    .catch( async(error) => {
+      console.log("Error>>", error);
+      await dispatch({ type: LOGIN_FAILURE, payload: error });
+      await dispatch({ type: LOGIN_PENDING, payload: false });
+    });
 };
