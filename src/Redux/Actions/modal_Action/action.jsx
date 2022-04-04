@@ -1,5 +1,4 @@
-import { OPEN_LOGIN_MODEL,OPEN_SIGNUP_MODEL,AFTER_LOGIN} from "./actonType";
-
+import { OPEN_LOGIN_MODEL,OPEN_SIGNUP_MODEL} from "./actonType";
 export const openModal = (data) => {
   return {
     type: OPEN_LOGIN_MODEL,

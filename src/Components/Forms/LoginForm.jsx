@@ -1,4 +1,3 @@
-import { Form, Input, Button } from "antd";
 import { useState } from "react";
 import { LoadingOutlined } from "@ant-design/icons";
 import "./LoginForm.css";
@@ -8,7 +7,8 @@ import {
   openModal,
   signupModal,
 } from "../../Redux/Actions/modal_Action/action";
-
+import { Form, Input, Button } from "antd";
+import "./LoginForm.css";
 export const LoginForm = () => {
   const [formData, setformData] = useState({
     email: "",
@@ -57,6 +57,7 @@ export const LoginForm = () => {
     dispatch(openModal(false));
     dispatch(signupModal(true));
   };
+
   return (
     <div className="main-body">
       <img className="modalImage" src="/images/Login.png" />

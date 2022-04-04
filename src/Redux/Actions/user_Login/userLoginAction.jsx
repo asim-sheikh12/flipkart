@@ -17,5 +17,5 @@ export const loginUser = (formData) => async (dispatch) => {
       console.log("Error>>", error);
       await dispatch({ type: LOGIN_FAILURE, payload: error });
       await dispatch({ type: LOGIN_PENDING, payload: false });
-    });
-};
+})
+}

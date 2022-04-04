@@ -1,8 +1,4 @@
-import {
-  OPEN_LOGIN_MODEL,
-  OPEN_SIGNUP_MODEL,
-  AFTER_LOGIN,
-} from "../../Actions/modal_Action/actonType";
+import { OPEN_LOGIN_MODEL,OPEN_SIGNUP_MODEL } from "../../Actions/modal_Action/actonType";
 
 const initialState = {
   LoginmodalStatus: false,
@@ -20,11 +16,6 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         SignUpmodalStatus: action.status,
-      };
-    case AFTER_LOGIN:
-      return {
-        ...state,
-        AfterLogin: action.status,
       };
     default:
       return state;

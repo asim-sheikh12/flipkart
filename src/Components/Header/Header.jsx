@@ -48,6 +48,10 @@ export const Headers = () => {
     setisOpen(LoginmodalStatus);
     setSignUpisOpen(SignUpmodalStatus);
   }, [LoginmodalStatus, SignUpmodalStatus, clear]);
+  useEffect(() => {
+    setisOpen(LoginmodalStatus);
+    setSignUpisOpen(SignUpmodalStatus);
+  }, [LoginmodalStatus, SignUpmodalStatus]);
   const { Search } = Input;
   const loginMenu = (
     <>
