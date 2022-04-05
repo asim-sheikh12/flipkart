@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { PlusOutlined,MinusOutlined } from "@ant-design/icons";
-import { Drawer, Button, Badge,notification} from "antd";
-import { DeleteFromCart,increment,decrement } from "../../Redux/Actions/cartActions/cartActions";
+import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
+import { Drawer, Button, Badge, notification } from "antd";
+import {
+  DeleteFromCart,
+  increment,
+  decrement,
+} from "../../Redux/Actions/cartActions/cartActions";
 import "./Cart.css";
+import { Link } from "react-router-dom";
 export const Cart = () => {
   const [visible, setVisible] = useState(false);
-  const cartData = useSelector((state) => state.cartReducer);
+  const cartData = useSelector((state) => state?.cartReducer);
   const dispatch = useDispatch();
   const showDrawer = () => {
     setVisible(true);
@@ -14,7 +19,10 @@ export const Cart = () => {
   const onClose = () => {
     setVisible(false);
   };
-  const toatalItems = cartData.reduce((total, item) => item.quantity + total, 0)
+  const toatalItems = cartData?.reduce(
+    (total, item) => item.quantity + total,
+    0
+  );
 
   return (
     <>
@@ -32,37 +40,66 @@ export const Cart = () => {
         visible={visible}
       >
         <h2>You have {toatalItems} items in cart</h2>
-        
-        {cartData.map((item, index) => (
+
+        {cartData?.map((item, index) => (
           <div className="cartDrawerItems" key={index}>
-          <div className="titleBtn">
-            <p className="text">
-              {item.title} : ₹{item.price}
-            </p>
-            <div className="actions">
-             <Button className="removeBtn" onClick={() =>dispatch(decrement(item.id))}>
-               <MinusOutlined/>
-              </Button>
-             <input type='text' value={item.quantity} disabled className="inputQuantity"/>
-            <Button className="addBtn" onClick={()=>dispatch(increment(item.id))}>
-                <PlusOutlined />
-              </Button>
+            <div className="titleBtn">
+              <p className="text">
+                {item.title} : ₹{item.price}
+              </p>
+              <div className="actions">
+                <Button
+                  className="removeBtn"
+                  onClick={() => dispatch(decrement(item.id))}
+                >
+                  <MinusOutlined />
+                </Button>
+                <input
+                  type="text"
+                  value={item.quantity}
+                  disabled
+                  className="inputQuantity"
+                />
+                <Button
+                  className="addBtn"
+                  onClick={() => dispatch(increment(item.id))}
+                >
+                  <PlusOutlined />
+                </Button>
               </div>
-              </div>
-              <div className="cartRemove">
-            <div className="imgDiv">
-              <img className="drawerImage" src={item.imgUrl} height="100px" />
             </div>
-             <Button className="removeAll" onClick={() =>dispatch(DeleteFromCart(item.id))}>
-              Remove Item
-              </Button>
+            <div className="cartRemove">
+              <div className="imgDiv">
+                <img className="drawerImage" src={item.imgUrl} height="100px" />
               </div>
+              <Button
+                className="removeAll"
+                onClick={() => dispatch(DeleteFromCart(item.id))}
+              >
+                Remove Item
+              </Button>
+            </div>
           </div>
         ))}
-        <h2>
-          {cartData.length>0 && (<><hr/>Total : ₹{ cartData.reduce((total, item) => item.price * item.quantity + total, 0)}</>)}
-        </h2>
-        <hr />
+        {cartData.length > 0 && (
+          <>
+            <h2>
+              <hr />
+              Total : ₹
+              {cartData.reduce(
+                (total, item) => item.price * item.quantity + total,
+                0
+              )}
+            </h2>
+
+            <hr />
+            <div>
+              <Link to="/checkout">
+                <Button className="checkout-btn">Checkout</Button>
+              </Link>
+            </div>
+          </>
+        )}
       </Drawer>
     </>
   );

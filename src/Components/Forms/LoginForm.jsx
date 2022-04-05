@@ -37,8 +37,6 @@ export const LoginForm = () => {
   const validate = (values) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
-    const mobilePattern = /^(\+\d{1,3}[- ]?)?\d{10}$/;
-
     if (!values.email) {
       errors.email = "Please enter valid Email ID/Mobile number!";
     } else if (!regex.test(values.email)) {
@@ -65,14 +63,8 @@ export const LoginForm = () => {
         name="normal_login"
         className="login-form"
         autoComplete="off"
-        initialValues={
-          {
-            // remember: true,
-          }
-        }
         onFinish={handleSubmit}
       >
-        {/* {console.log(typeof email)} */}
         <Form.Item>
           <Input
             name="email"

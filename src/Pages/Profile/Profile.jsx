@@ -1,21 +1,18 @@
-import React from 'react'
-import { LoginForm } from '../../Components/Forms/LoginForm'
-import { Headers } from '../../Components/Header/Header'
-import { NavBar2 } from '../../Components/NavBar2/NavBar2';
+import React from "react";
+import { SignupForm } from "../../Components/Forms/SinupForm";
+import { Headers } from "../../Components/Header/Header";
+import { NavBar2 } from "../../Components/NavBar2/NavBar2";
 
 export const Profile = () => {
   let styles = {
-        marginTop: '20px',
-        borderShadow: '0 1px 2px 0 rgb(0 0 0 / 40%)',
-        
-      };
+    marginTop: "20px",
+    borderShadow: "0 1px 2px 0 rgb(0 0 0 / 40%)",
+  };
   return (
     <div>
-    <Headers/>
-    <NavBar2/>
-    <div style={styles}>
-    <LoginForm/>
+      <Headers />
+      <NavBar2 />
+      <img src="/images/profile.png" />
     </div>
-    </div>
-  )
-}
+  );
+};

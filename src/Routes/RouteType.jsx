@@ -9,6 +9,8 @@ import App from "../App/App";
 import { AddAddress } from "../Pages/Address/AddAddress";
 import { Addresses } from "../Pages/Address/Addresses";
 import { Product_Description } from "../Pages/Product_Description/Product_Description";
+import { Checkout } from "../Pages/Checkout/Checkout";
+import { Payment } from "../Pages/Payment Page/Payment";
 export const routes = [
     { path: "/profile", element: <Profile /> },
     { path: "/plus", element: <FlipkartPlus /> },
@@ -21,4 +23,6 @@ export const routes = [
     { path: "/allAddresses", element: <Addresses /> },
     { path: "/address", element: <AddAddress /> },
     { path: "/productDescription", element: <Product_Description /> },
+    { path: "/checkout", element: <Checkout /> },
+    { path: "/payment", element: <Payment /> },
   ];

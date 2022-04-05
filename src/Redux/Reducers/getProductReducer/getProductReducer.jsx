@@ -1,7 +1,9 @@
 import { Product_Details } from "../../../Pages/Product Details/Product_Details";
+import { FETCH_SUCCESS } from "../../Actions/getProduct/getProductType";
 
 const initialState = {
   productData: [],
+  success: false,
 };
 
 const getProductReducer = (state = initialState, action) => {
@@ -10,6 +12,12 @@ const getProductReducer = (state = initialState, action) => {
       return {
         ...state,
         productData: action.payload,
+      };
+    case FETCH_SUCCESS:
+      
+      return {
+        ...state,
+        success: action.payload,
       };
     default:
       return state;

@@ -31,13 +31,13 @@ export const Headers = () => {
   const [isOpen, setisOpen] = useState(false);
   const [signUpisOpen, setSignUpisOpen] = useState(false);
   const [clear, setClear] = useState(false);
-  const userData = useSelector((state) => state.userReducer.userData);
+  const userData = useSelector((state) => state?.userReducer?.userData);
   const appDispatch = useDispatch();
   const LoginmodalStatus = useSelector(
-    (state) => state.reducer.LoginmodalStatus
+    (state) => state?.reducer?.LoginmodalStatus
   );
   const SignUpmodalStatus = useSelector(
-    (state) => state.reducer.SignUpmodalStatus
+    (state) => state?.reducer?.SignUpmodalStatus
   );
   const logOut = () => {
     localStorage.clear("Token");

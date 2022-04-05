@@ -6,7 +6,7 @@ export const Routing = () => {
     <div>
       <Router>
         <Routes>
-          {routes.map((route,index) => {
+          {routes?.map((route,index) => {
             return <Route key={index} path={route.path} element={route.element} />;
           })}
         </Routes>

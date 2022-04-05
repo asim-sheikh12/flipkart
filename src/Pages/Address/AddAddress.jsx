@@ -40,7 +40,7 @@ export const AddAddress = () => {
     submitProps.resetForm();
   };
   const handleChangeCountry = (state) => {
-    const foundStates = countryData.find((c) => c.name === state)?.states;
+    const foundStates = countryData?.find((c) => c.name === state)?.states;
     setStates(foundStates);
     setLoading(true);
   };
@@ -66,7 +66,7 @@ export const AddAddress = () => {
                 onChange={(value) => handleChangeCountry(value)}
                 status={errors.country && touched.country ? "error" : ""}
               >
-                {countryData.map((option) => (
+                {countryData?.map((option) => (
                   <Select.Option key={option.iso3} value={option.name}>
                     {option.name}
                   </Select.Option>

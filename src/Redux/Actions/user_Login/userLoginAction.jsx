@@ -5,7 +5,7 @@ import axios from "axios";
 export const loginUser = (formData) => async (dispatch) => {
   await dispatch({ type: LOGIN_PENDING, payload: true }) 
   await axios
-    .post("https://polite-rabbit-27.loca.lt/api/user_login", formData)
+    .post("https://red-tiger-45.loca.lt/api/user_login",formData)
     .then(async(res) => {
       console.log("response",res.data.data);
       localStorage.setItem("Token",res.data.data.token)

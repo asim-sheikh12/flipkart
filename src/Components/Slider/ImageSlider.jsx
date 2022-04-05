@@ -23,6 +23,11 @@ export const ImageSlider = () => {
         </div>
         <div>
           <h3 style={contentStyle}>
+            <img className="sliderImg" src="https://rukminim2.flixcart.com/flap/1200/640/image/6b8c9831c3b4c766.jpg?q=50" />
+          </h3>
+        </div>
+        <div>
+          <h3 style={contentStyle}>
             <img className="sliderImg" src="/images/slider2.jpg" />
           </h3>
         </div>

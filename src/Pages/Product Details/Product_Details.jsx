@@ -14,48 +14,51 @@ export const Product_Details = () => {
   useEffect(() => {
     dispatch(getProductDetails());
   }, []);
+  const loading = useSelector((state) => state?.getProductReducer?.success);
   return (
     <div className="products">
-      {fetchData.map((item, index) => (
-        <div className="card" key={index}>
-          <Link
-            to="/productDescription"
-            onClick={() => dispatch(ProductID(item))}
-          >
-            <Card
-            className="cardContent"
-              hoverable
-              style={{ width: 250 }}
-              cover={
+      {fetchData &&
+        fetchData?.map((item, index) => (
+          <div className="card" key={index}>
+            <Link
+              to="/productDescription"
+              onClick={() => dispatch(ProductID(item))}
+            >
+              <Card
+                className="cardContent"
+                loading={loading}
+                hoverable
+                style={{ width: 250 }}
+                cover={
+                  <img
+                    className="productImages"
+                    alt="product image"
+                    src={item.imgUrl}
+                  />
+                }
+              >
+                <h2>
+                  <Meta title={item.title} description={`₹ ${item.price}`} />
+                </h2>
                 <img
-                  className="productImages"
-                  alt="product image"
-                  src={item.imgUrl}
+                  className="fimage"
+                  src="/images/fassured.png"
+                  height="30"
+                  width="150"
                 />
-              }
-            >
-              <h2>
-                <Meta title={item.title} description={`₹ ${item.price}`} />
-              </h2>
-              <img
-                className="fimage"
-                src="/images/fassured.png"
-                height="30"
-                width="150"
-              />
-            </Card>
-          </Link>
+              </Card>
+            </Link>
 
-          <div className="btn">
-            <Button
-              className="addToCart"
-              onClick={() => dispatch(AddToCart(item))}
-            >
-              Add To Cart
-            </Button>
+            <div className="btn">
+              <Button
+                className="addToCart"
+                onClick={() => dispatch(AddToCart(item))}
+              >
+                Add To Cart
+              </Button>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
     </div>
   );
 };

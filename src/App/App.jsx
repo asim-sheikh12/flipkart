@@ -37,7 +37,7 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <Suspense fallback={<Spin indicator={antIcon} />}>
+      <Suspense fallback={<Spin indicator={antIcon}/>}>
         <Headers />
         <NavBar />
         <ImageSlider />
