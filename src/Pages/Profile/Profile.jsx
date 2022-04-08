@@ -1,5 +1,4 @@
 import React from "react";
-import { SignupForm } from "../../Components/Forms/SinupForm";
 import { Headers } from "../../Components/Header/Header";
 import { NavBar2 } from "../../Components/NavBar2/NavBar2";
 

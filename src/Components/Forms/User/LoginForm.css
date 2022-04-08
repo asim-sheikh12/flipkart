@@ -75,10 +75,13 @@
   vertical-align: top;
 }
 .ant-btn-primary:hover{
-  background-color: none;
+  background-color: white;
+  color: #2874f0;
+
 }
 .ant-btn-primary:focus{
-    background-color: none ;
+    background-color: white ;
+    color: #2874f0;
 
 }
 .or{

@@ -35,7 +35,6 @@ export const AddAddress = () => {
       .then(res => {
         console.log(res)
       })
-    console.log("Form data", values);
     submitProps.setSubmitting(false);
     submitProps.resetForm();
   };

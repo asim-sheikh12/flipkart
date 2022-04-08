@@ -11,8 +11,8 @@
 .navImage{
     height: 64px;
     width: 64px;
-    border: solid 2px rgb(163, 4, 163);
-    border-radius: 50%;
+    /* border: solid 2px rgb(163, 4, 163);
+    border-radius: 50%; */
 }   
 .Navbar :hover {
   color: #2874f0;

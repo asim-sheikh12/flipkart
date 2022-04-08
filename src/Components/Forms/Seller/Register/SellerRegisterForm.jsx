@@ -1,8 +1,8 @@
 import { Input,Select,Form } from "antd";
-import { loginSeller } from "../../Redux/Actions/sellerActions/sellerLogin";
+import { sellerRegister } from "../../../../Redux/Actions/sellerActions/sellerRegister";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "./RegisterForm.css";
+import "./SellerRegisterForm.css";
 import { useDispatch } from "react-redux";
 export const RegisterForm = () => {
   const [formData, setFormData] = useState({
@@ -25,14 +25,12 @@ export const RegisterForm = () => {
   const handleSubmit = (e) => {
     formData.phone = val;
     e.preventDefault();
-    console.log(formData);
       if({...formData})
     {
-      dispatch(loginSeller(formData))
+      dispatch(sellerRegister(formData))
     }
   };
   const OTP = () => {
-    console.log("OTP BUTTON");
   };
   return (
     <>
@@ -107,6 +105,7 @@ export const RegisterForm = () => {
           <div>
             <button className="submit-btn">Submit</button>
           </div>
+          <span>Already have an Account ? <Link to='/sellerLogin'>Login</Link></span>
         </form>
       </div>
       <div>

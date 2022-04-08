@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import {
   openModal,
   signupModal,
-} from "../../Redux/Actions/modal_Action/action";
+} from "../../../Redux/Actions/modal_Action/action";
 
 export const SignupForm = () => {
   const initialValues = {
@@ -24,7 +24,6 @@ export const SignupForm = () => {
       .then((res) => {
         console.log(res);
       });
-    console.log("Form Data", values);
     submitProps.setSubmitting(false);
     submitProps.resetForm();
   };

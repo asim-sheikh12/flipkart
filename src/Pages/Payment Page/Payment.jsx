@@ -34,7 +34,7 @@ const Total = cartData.reduce(
       </div>
       <div>
     <GooglePayButton
-    className="googlePay-btn"
+  className="googlePay-btn"
   environment="TEST"
   paymentRequest={{
     apiVersion: 2,

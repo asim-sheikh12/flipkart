@@ -11,6 +11,7 @@ import {
 } from "../../Redux/Actions/cartActions/cartActions";
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import { ProductID } from "../../Redux/Actions/productDescription/productDescription";
 export const Checkout = () => {
   const cartData = useSelector((state) => state?.cartReducer);
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ export const Checkout = () => {
   return (
     <div>
       <Headers />
-      <NavBar2 className='navBar'/>
+      <NavBar2 className="navBar" />
       <div className="main-Body">
         {cartData.length > 0 ? (
           <Card
@@ -37,6 +38,7 @@ export const Checkout = () => {
                     <div className="actions">
                       <Button
                         className="removeBtn checkout-actions"
+                        disabled={item.quantity === 1}
                         onClick={() => dispatch(decrement(item.id))}
                       >
                         <MinusOutlined />
@@ -56,9 +58,15 @@ export const Checkout = () => {
                     </div>
                   </div>
                   <div className="middleDiv">
-                    <span className="item-title">{item.title}</span>
-                    <span>{item.description}</span>
-                    <span className="price">Price : ₹{item.price}</span>
+                    <Link
+                     className="link"
+                      to="/productDescription"
+                      onClick={() => dispatch(ProductID(item))}
+                    >
+                      <span className="item-title">{item.title}</span><br/>
+                      <span>{item.description}</span><br/>
+                      <span className="price">Price : ₹{item.price}</span>
+                    </Link>
                     <div className="save-remove-btns">
                       <Button className="sfl-btn">SAVE FOR LATER </Button>
                       <Button
@@ -83,7 +91,7 @@ export const Checkout = () => {
         )}
 
         {cartData.length > 0 && (
-          <div className="left-div">
+          <div className="left-content">
             <Card
               title={<h1 className="price-details">PRICE DETAILS</h1>}
               style={{ width: 300 }}

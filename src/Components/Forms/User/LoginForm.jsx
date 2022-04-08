@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { LoadingOutlined } from "@ant-design/icons";
 import "./LoginForm.css";
-import { loginUser } from "../../Redux/Actions/user_Login/userLoginAction";
+import { loginUser } from "../../../Redux/Actions/user_Login/userLoginAction";
 import { useDispatch, useSelector } from "react-redux";
 import {
   openModal,
   signupModal,
-} from "../../Redux/Actions/modal_Action/action";
+} from "../../../Redux/Actions/modal_Action/action";
 import { Form, Input, Button } from "antd";
 import "./LoginForm.css";
 export const LoginForm = () => {
@@ -20,7 +20,6 @@ export const LoginForm = () => {
 
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
-    console.log(formData);
     setFormErrors(validate(formData));
     setIsSubmit(true);
     if (formData.email && formData.password) {

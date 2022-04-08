@@ -44,10 +44,14 @@
   flex-direction: row;
   justify-content: space-between;
 }
-.left-div {
+.left-content {
   display: flex;
   position: fixed;
-  right: 0.5rem;
+   right: 0.5rem;
+}
+.link{
+  text-decoration: none;
+  color: rgba(26, 23, 23, 0.823);
 }
 .hr-Line {
   border-top: 1px dashed #565959;
@@ -97,15 +101,15 @@
 }
 .placeOrder-div {
   display: block;
-  box-sizing: border-box;
+      box-sizing: border-box;
   background-color: white;
   z-index: 999;
 }
-.place-order-btn:hover {
+.place-order-btn:hover{
   background-color: #fb641b;
   color: #fff;
 }
-.place-order-btn:focus {
+.place-order-btn:focus{
   background-color: #fb641b;
   color: #fff;
 }

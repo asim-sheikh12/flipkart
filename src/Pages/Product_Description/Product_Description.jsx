@@ -1,13 +1,15 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Headers } from "../../Components/Header/Header";
 import ReactImageMagnify from "@blacklab/react-image-magnify";
 import { NavBar2 } from "../../Components/NavBar2/NavBar2";
-import { Breadcrumb } from "antd";
+import { Breadcrumb, Button } from "antd";
 import "./Product_Description.css";
+import { AddToCart } from "../../Redux/Actions/cartActions/cartActions";
 
 export const Product_Description = () => {
   const product = useSelector((state) => state?.productDescriptionReducer);
+  const dispatch = useDispatch()
   return (
     <div>
       <Headers />
@@ -54,7 +56,15 @@ export const Product_Description = () => {
             <p style={{ color: "#388e3c", fontWeight: 800, fontSize: "16px" }}>
               Special price
             </p>
-            <h2> ₹ {product.price}</h2>
+            <div className="description-atc">
+              <h2> ₹ {product.price}</h2>
+              <Button
+                className="addToCart addtBTN"
+                onClick={() => dispatch(AddToCart(product))}
+              >
+                Add To Cart
+              </Button>
+            </div>
           </div>
           <div>
             <h2>Available offers</h2>
@@ -83,7 +93,7 @@ export const Product_Description = () => {
                 src="https://rukminim2.flixcart.com/www/36/36/promos/06/09/2016/c22c9fc4-0555-4460-8401-bf5c28d7ba29.png?q=90"
               />
               <span> Partner Offer</span> Sign up for Flipkart Pay Later and get
-              Flipkart Gift Card worth ₹100*{" "}
+              Flipkart Gift Card worth ₹100*
               <span style={{ color: "#2874f0" }}>Know More</span>
             </p>
 

@@ -50,6 +50,7 @@ export const Cart = () => {
               <div className="actions">
                 <Button
                   className="removeBtn"
+                  disabled={item.quantity===1}
                   onClick={() => dispatch(decrement(item.id))}
                 >
                   <MinusOutlined />

@@ -1,4 +1,4 @@
-import { SELLER_LOGIN } from "../../Actions/sellerActions/sellerLoginType";
+import { SELLER_REGISTER } from "../../Actions/sellerActions/sellerRegisterType";
 
 const initialState = {
     sellerData : []
@@ -7,7 +7,7 @@ const initialState = {
 const sellerReducer = (state= initialState,action) => {
     switch(action.type)
     {
-        case SELLER_LOGIN : 
+        case SELLER_REGISTER : 
         return {
             ...state, sellerData : action.payload
         }

@@ -6,7 +6,6 @@ export  const Deals = () => {
     const { Countdown } = Statistic;
 const deadline = Date.now() + 1000 * 60 * 60 * 24 * 2 + 1000 * 30;
 function onFinish() {
-  console.log('finished!');
 }
   return (
     <div className='deals-body'>

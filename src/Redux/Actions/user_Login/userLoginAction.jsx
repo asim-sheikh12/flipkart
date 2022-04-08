@@ -5,10 +5,9 @@ import axios from "axios";
 export const loginUser = (formData) => async (dispatch) => {
   await dispatch({ type: LOGIN_PENDING, payload: true }) 
   await axios
-    .post("https://red-tiger-45.loca.lt/api/user_login",formData)
+    .post("https://chilly-monkey-27.loca.lt/api/user_login",formData)
     .then(async(res) => {
-      console.log("response",res.data.data);
-      localStorage.setItem("Token",res.data.data.token)
+      localStorage.setItem("User Login Token",res.data.data.token)
       await dispatch({ type: LOGIN_SUCCESS, payload: res.data.data });
       await dispatch({ type: LOGIN_PENDING, payload: false });
       await dispatch(openModal(false));

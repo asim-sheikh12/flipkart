@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Modal } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { openModal } from "../../Redux/Actions/modal_Action/action";
-import { LoginForm } from "../Forms/LoginForm";
+import { LoginForm } from "../Forms/User/LoginForm";
 import "./Modal.css";
 
 export const LoginModal = ({ data }) => {
@@ -13,9 +13,9 @@ export const LoginModal = ({ data }) => {
       <Modal
         className="Modal"
         centered
-        visible={visible}
+        visible={data}
         onCancel={() => {
-          appDispatch(openModal(data));
+          appDispatch(openModal(!data));
           setVisible(false);
         }}
         width={600}
