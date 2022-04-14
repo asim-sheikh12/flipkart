@@ -10,16 +10,27 @@ import {
   decrement,
 } from "../../Redux/Actions/cartActions/cartActions";
 import { MinusOutlined, PlusOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ProductID } from "../../Redux/Actions/productDescription/productDescription";
+import { openModal } from "../../Redux/Actions/modal_Action/action";
 export const Checkout = () => {
   const cartData = useSelector((state) => state?.cartReducer);
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const discount = 600;
   const Total = cartData.reduce(
     (total, item) => item.price * item.quantity + total,
     0
   );
+ const placeOrder = () => {
+   if(localStorage.getItem('userToken'))
+   {
+     navigate('/payment')
+   }
+   else{
+     dispatch(openModal(true))
+   }
+ }
   return (
     <div>
       <Headers />
@@ -80,9 +91,9 @@ export const Checkout = () => {
                 </div>
               </Card>
             ))}
-            <Link to="/payment">
-              <Button className="place-order-btn">Place Order</Button>
-            </Link>
+            
+              <Button onClick={()=>placeOrder()} className="place-order-btn">Place Order</Button>
+          
           </Card>
         ) : (
           <div className="empty-state">

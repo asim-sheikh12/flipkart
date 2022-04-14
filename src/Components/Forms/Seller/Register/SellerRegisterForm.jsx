@@ -1,7 +1,7 @@
-import { Input,Select,Form } from "antd";
+import { Input } from "antd";
 import { sellerRegister } from "../../../../Redux/Actions/sellerActions/sellerRegister";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./SellerRegisterForm.css";
 import { useDispatch } from "react-redux";
 export const RegisterForm = () => {
@@ -11,10 +11,15 @@ export const RegisterForm = () => {
     phone: "",
     password: "",
   });
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [val, setVal] = useState("");
+
   useEffect(() => {
     document.body.style.backgroundColor = "rgb(0, 120, 212)";
+    if (localStorage.getItem("adminToken")) {
+      navigate('/admin')
+    }
   });
   const handleOnChange = (e) => {
     setFormData({
@@ -25,13 +30,11 @@ export const RegisterForm = () => {
   const handleSubmit = (e) => {
     formData.phone = val;
     e.preventDefault();
-      if({...formData})
-    {
-      dispatch(sellerRegister(formData))
+    if ({ ...formData }) {
+      dispatch(sellerRegister(formData));
     }
   };
-  const OTP = () => {
-  };
+  const OTP = () => {};
   return (
     <>
       <Link to="/">
@@ -105,11 +108,13 @@ export const RegisterForm = () => {
           <div>
             <button className="submit-btn">Submit</button>
           </div>
-          <span>Already have an Account ? <Link to='/sellerLogin'>Login</Link></span>
+          <span>
+            Already have an Account ? <Link to="/sellerLogin">Login</Link>
+          </span>
         </form>
       </div>
       <div>
-        <img className="image" src="/images/seller.png"/>
+        <img className="image" src="/images/seller.png" />
       </div>
     </>
   );

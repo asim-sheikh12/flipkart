@@ -3,7 +3,7 @@ import { Modal } from "antd";
 import { useDispatch } from "react-redux";
 import { signupModal } from "../../Redux/Actions/modal_Action/action";
 import "./SignupModal.css";
-import { SignupForm } from "../Forms/User/SinupForm";
+import { SignupForm } from "../Forms/User/Signup/SinupForm";
 
 export const SignupModal = ({ data }) => {
   const [visible, setVisible] = useState(data);

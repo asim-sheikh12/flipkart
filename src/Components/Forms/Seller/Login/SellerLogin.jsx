@@ -14,15 +14,15 @@ export const SellerLogin = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     document.body.style.backgroundColor = "rgb(0, 120, 212)";
+    if (localStorage.getItem("adminToken")) {
+      navigate("/admin");
+    }
   });
   const onSubmit = (values, submitProps) => {
     console.log(values);
     submitProps.setSubmitting(false);
     submitProps.resetForm();
-     dispatch(sellerLogin(values));
-    if (localStorage.getItem("Token")) {
-      navigate("/admin");
-    }
+    dispatch(sellerLogin(values));
   };
   return (
     <>

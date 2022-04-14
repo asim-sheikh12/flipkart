@@ -1,6 +1,6 @@
 import React from "react";
-import { Admin_header } from "../Admin_Header/Admin_header";
-import { Sidemenu } from "../Sidemenu/Sidemenu";
+import { Admin_header } from "../../Components/Admin_Header/Admin_header";
+import { Sidemenu } from "../../Components/Sidemenu/Sidemenu";
 import './Stats.css'
 export const Stats = () => {
   return (

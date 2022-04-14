@@ -1,13 +1,14 @@
 import { LOGIN_SUCCESS,LOGIN_FAILURE,LOGIN_PENDING } from "./userLogin";
 import { openModal } from "../modal_Action/action";
 import axios from "axios";
+import { BASE_URL } from "../../../Components/config/envCongig";
 
 export const loginUser = (formData) => async (dispatch) => {
   await dispatch({ type: LOGIN_PENDING, payload: true }) 
   await axios
-    .post("https://chilly-monkey-27.loca.lt/api/user_login",formData)
+    .post(`${BASE_URL}/userLogin`,formData)
     .then(async(res) => {
-      localStorage.setItem("User Login Token",res.data.data.token)
+      localStorage.setItem("userToken",res.data.data.token)
       await dispatch({ type: LOGIN_SUCCESS, payload: res.data.data });
       await dispatch({ type: LOGIN_PENDING, payload: false });
       await dispatch(openModal(false));

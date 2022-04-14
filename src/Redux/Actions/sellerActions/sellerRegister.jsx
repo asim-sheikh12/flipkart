@@ -1,10 +1,11 @@
 import axios from "axios";
+import { BASE_URL } from "../../../Components/config/envCongig";
 import { SELLER_REGISTER } from "./sellerRegisterType";
 export const sellerRegister = (formData) => async (dispatch) => {
   const { fullName, email, phone, password } = formData;
 
   await axios
-    .post(`https://brown-stingray-11.loca.lt/auth/seller/register`, {
+    .post(`${BASE_URL}/api/adminSignup`, {
       fullName,
       email,
       phone,
@@ -12,7 +13,8 @@ export const sellerRegister = (formData) => async (dispatch) => {
     })
     .then(async(res) => {
       console.log(res);
-      console.log("Seller Register");
+      localStorage.setItem('adminToken',)
+      console.log("Admin Register");
        await dispatch({ type: SELLER_REGISTER, payload: res });
     });
      

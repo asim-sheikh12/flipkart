@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Modal } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { openModal } from "../../Redux/Actions/modal_Action/action";
-import { LoginForm } from "../Forms/User/LoginForm";
+import { LoginForm } from "../Forms/User/Login/LoginForm";
 import "./Modal.css";
 
 export const LoginModal = ({ data }) => {

@@ -32,6 +32,9 @@ export const Headers = () => {
   const [signUpisOpen, setSignUpisOpen] = useState(false);
   const [clear, setClear] = useState(false);
   const userData = useSelector((state) => state?.userReducer?.userData);
+  const registerUserData = useSelector(
+    (state) => state?.userRegisterReducer?.registerData
+  );
   const appDispatch = useDispatch();
   const LoginmodalStatus = useSelector(
     (state) => state?.reducer?.LoginmodalStatus
@@ -40,7 +43,7 @@ export const Headers = () => {
     (state) => state?.reducer?.SignUpmodalStatus
   );
   const logOut = () => {
-    localStorage.clear("Token");
+    localStorage.clear("userLogin");
     setClear(true);
   };
 
@@ -63,7 +66,6 @@ export const Headers = () => {
               className="signUp"
               onClick={() => appDispatch(signupModal(!signUpisOpen))}
             >
-              {" "}
               Signup
             </button>
           </span>
@@ -106,28 +108,29 @@ export const Headers = () => {
       </Menu>
     </>
   );
-  const afterLoginMenu = (<Menu>
-   <Menu.Item key="0">
-          <UserOutlined className="moreMenuIcons" />
-          <Link to="/profile">
-            <span className="moreMenu">My Profile </span>
-          </Link>
-        </Menu.Item>
-        <Menu.Divider />
-         <Menu.Item key="1">
-          <HeartTwoTone className="moreMenuIcons" />
-          <Link to="/wishlist">
-            <span className="moreMenu">Wishlist</span>
-          </Link>
-        </Menu.Item>
-        <Menu.Divider />
-         <Menu.Item key="2">
-          <WalletTwoTone className="moreMenuIcons" />
-          <Link to="/allAddresses">
-            <span className="moreMenu">Address</span>
-          </Link>
-        </Menu.Item>
-        <Menu.Divider />
+  const afterLoginMenu = (
+    <Menu>
+      <Menu.Item key="0">
+        <UserOutlined className="moreMenuIcons" />
+        <Link to="/profile">
+          <span className="moreMenu">My Profile </span>
+        </Link>
+      </Menu.Item>
+      <Menu.Divider />
+      <Menu.Item key="1">
+        <HeartTwoTone className="moreMenuIcons" />
+        <Link to="/wishlist">
+          <span className="moreMenu">Wishlist</span>
+        </Link>
+      </Menu.Item>
+      <Menu.Divider />
+      <Menu.Item key="2">
+        <WalletTwoTone className="moreMenuIcons" />
+        <Link to="/allAddresses">
+          <span className="moreMenu">Address</span>
+        </Link>
+      </Menu.Item>
+      <Menu.Divider />
       <Menu.Item key="3">
         <BellFilled className="moreMenuIcons" />
         <a target="_blank" rel="noopener noreferrer" href="#">
@@ -161,7 +164,8 @@ export const Headers = () => {
         <LogoutOutlined className="moreMenuIcons" />
         <span className="moreMenu">Log Out</span>
       </Menu.Item>
-    </Menu>)
+    </Menu>
+  );
   const menu = (
     <Menu>
       <Menu.Item key="0">
@@ -224,19 +228,20 @@ export const Headers = () => {
         />
       </div>
       <div>
-        {localStorage.getItem("User Login Token") ? (<Dropdown
-        overlay={afterLoginMenu}
-        placement="bottom"
-        arrow={{ pointAtCenter: true }}
-      >
-        <a
-          className="ant-dropdown-link More"
-          onClick={(e) => e.preventDefault()}
-        >
-          {userData.fullName} <DownOutlined />
-        </a>
-      </Dropdown>
-          
+        {localStorage.getItem("userToken") ? (
+          <Dropdown
+            overlay={afterLoginMenu}
+            placement="bottom"
+            arrow={{ pointAtCenter: true }}
+          >
+            <a
+              className="ant-dropdown-link More"
+              onClick={(e) => e.preventDefault()}
+            >
+              {registerUserData.username}
+              {userData.fullName} <DownOutlined />
+            </a>
+          </Dropdown>
         ) : (
           <Dropdown
             overlay={loginMenu}

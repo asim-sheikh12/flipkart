@@ -8,6 +8,7 @@ import sellerLoginReducer from '../sellerReducer/Login/sellerLoginReducer';
 import {combineReducers} from 'redux';
 import sellerListReducer from '../../../Admin_Dashboard/Admin_Redux/Seller_List/Reducer/sellerListReducer';
 import adminActionReducer from '../../../Admin_Dashboard/Admin_Redux/Admin_Actions/Reducer/adminActionReducers'
+import userRegisterReducer from '../userRegister/userRegisterReducer';
 
 const rootReducer = combineReducers(
     {
@@ -19,7 +20,8 @@ const rootReducer = combineReducers(
         sellerReducer,
         sellerLoginReducer,
         sellerListReducer,
-        adminActionReducer
+        adminActionReducer,
+        userRegisterReducer
     }
 )
 export default rootReducer;

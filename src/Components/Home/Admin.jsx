@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Home } from "../../Components/Home/Home";
+import React,{useEffect} from 'react'
+import {Home } from './Home'
 
 export const Admin = () => {
   useEffect(() => {
@@ -7,7 +7,7 @@ export const Admin = () => {
   }, []);
   return (
     <div>
-      <Home />
+        <Home/>
     </div>
-  );
-};
+  )
+}

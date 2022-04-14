@@ -2,13 +2,13 @@ import { Button, Modal } from "antd";
 import { Formik, ErrorMessage } from "formik";
 import { Input, Form } from "formik-antd";
 import "./SignupForm.css";
-import axios from "axios";
 import { validationSchema } from "./SignUpformValidations";
 import { useDispatch } from "react-redux";
 import {
   openModal,
   signupModal,
-} from "../../../Redux/Actions/modal_Action/action";
+} from "../../../../Redux/Actions/modal_Action/action";
+import { registerUser } from "../../../../Redux/Actions/user_Register/userRegister";
 
 export const SignupForm = () => {
   const initialValues = {
@@ -18,14 +18,10 @@ export const SignupForm = () => {
     password: "",
   };
   const dispatch = useDispatch();
-  const onSubmit = (values, submitProps) => {
-    axios
-      .post(`https://cold-grasshopper-8.loca.lt/api/user_signup`, values)
-      .then((res) => {
-        console.log(res);
-      });
-    submitProps.setSubmitting(false);
-    submitProps.resetForm();
+  const onSubmit = async (values, submitProps) => {
+    await dispatch(registerUser(values));
+    await submitProps.setSubmitting(false);
+    await submitProps.resetForm();
   };
   const Modal = () => {
     dispatch(openModal(true));
@@ -149,9 +145,6 @@ export const SignupForm = () => {
                 Existing User? Login
               </Button>
             </div>
-            {/* <a className="NewUser" href="#">
-              Existing User? Login
-            </a> */}
           </Form>
         )}
       </Formik>

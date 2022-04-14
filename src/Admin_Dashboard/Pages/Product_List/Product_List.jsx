@@ -7,10 +7,7 @@ export const Product_List = () => {
   const [productList,setProductList] = useState([]);
   useEffect(async () => {
     await axios
-      .get("http://localhost:5000/api/v1/products/product", 
-      // {
-      //   headers: { Authorization: `Bearer ${token}` },
-      // }
+      .get("http://localhost:5000/api/v1/products/product",
       )
       .then(async (res) => {
         console.log(res.data.data);

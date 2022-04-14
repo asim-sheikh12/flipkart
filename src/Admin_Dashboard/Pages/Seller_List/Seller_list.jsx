@@ -5,14 +5,13 @@ import { Switch } from "antd";
 import { CloseOutlined, CheckOutlined, CheckCircleOutlined, CloseCircleOutlined } from "@ant-design/icons";
 import "./Seller_list.css";
 import { approveSeller } from "../../Admin_Redux/Admin_Actions/Action/adminActions";
-import { Admin_header } from "../Admin_Header/Admin_header";
-import { Sidemenu } from "../Sidemenu/Sidemenu";
+import { Admin_header } from "../../Components/Admin_Header/Admin_header";
+import { Sidemenu } from "../../Components/Sidemenu/Sidemenu";
 export const Seller_list = () => {
   const sellerList = useSelector((state) => state?.sellerListReducer?.sellerList);
   console.log(sellerList);
   const loading = useSelector((state) => state.adminActionReducer.pending);
   const dispatch = useDispatch();
-  const token = localStorage.getItem("Token");
   const adminActions = async (id, e) => {
     if (e === true) {
       dispatch(approveSeller(id));
@@ -20,7 +19,7 @@ export const Seller_list = () => {
   };
     useEffect(() => {
     dispatch(getsellerList());
-  }, []);
+  }, [loading]);
   return (<>
   <Admin_header/>
   <div className="sellerList-conatiner">
