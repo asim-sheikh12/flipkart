@@ -17,26 +17,28 @@ import {
 import {
   Admin,
   Seller_list,
-  User_list,
+  User_list,  
   Product_List,
   Add_Product,
   Stats,
 } from "../Admin_Dashboard/Pages";
-export const routes = [
+export const publicRoutes = [
+  { path: "/register", element: <Register />},
+  { path: "/", element: <App />},
+  { path: "/productDescription",element: <Product_Description />},
+  { path: "/sellerLogin", element: <SellerLogin />},
+];
+export const privateRoutes = [
   { path: "/profile", element: <Profile /> },
   { path: "/plus", element: <FlipkartPlus /> },
   { path: "/wishlist", element: <Wishlist /> },
   { path: "/rewards", element: <Rewards /> },
   { path: "/giftcard", element: <GiftCard /> },
   { path: "/orders", element: <Orders /> },
-  { path: "/register", element: <Register /> },
-  { path: "/", element: <App /> },
   { path: "/allAddresses", element: <Addresses /> },
   { path: "/address", element: <AddAddress /> },
-  { path: "/productDescription", element: <Product_Description /> },
   { path: "/checkout", element: <Checkout /> },
   { path: "/payment", element: <Payment /> },
-  { path: "/sellerLogin", element: <SellerLogin /> },
   { path: "/admin", element: <Admin /> },
   { path: "/sellerList", element: <Seller_list /> },
   { path: "/userList", element: <User_list /> },
