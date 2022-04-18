@@ -1,7 +1,8 @@
-import { SELLER_REGISTER } from "../../Actions/sellerActions/sellerRegisterType";
+import { SELLER_REGISTER, SELLER_REGISTER_PENDING } from "../../Actions/sellerActions/sellerRegisterType";
 
 const initialState = {
-    sellerData : []
+    sellerData : [],
+    loading: false
 }
 
 const sellerReducer = (state= initialState,action) => {
@@ -11,6 +12,10 @@ const sellerReducer = (state= initialState,action) => {
         return {
             ...state, sellerData : action.payload
         }
+        case SELLER_REGISTER_PENDING:
+            return {
+                ...state,loading: action.payload
+            }
          default:
       return state;
     }

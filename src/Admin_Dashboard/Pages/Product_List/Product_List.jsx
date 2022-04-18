@@ -10,7 +10,6 @@ export const Product_List = () => {
       .get("http://localhost:5000/api/v1/products/product",
       )
       .then(async (res) => {
-        console.log(res.data.data);
         setProductList(res.data.data)
       })
       .catch(async (error) => {

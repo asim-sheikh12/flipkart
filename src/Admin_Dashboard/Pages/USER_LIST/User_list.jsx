@@ -16,7 +16,6 @@ export const User_list = () => {
       // }
       )
       .then(async (res) => {
-        console.log(res.data.data);
         setProductList(res.data.data)
       })
       .catch(async (error) => {

@@ -13,3 +13,4 @@ export * from "./Profile";
 export * from "./Register";
 export * from "./Rewards";
 export * from "./Wishlist";
+export * from "./PageNotFound";

@@ -4,7 +4,7 @@ import { sellerLogin } from "../../../../Redux/Actions/sellerActions/Seller_Logi
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { sellerloginValidations } from "./sellerLoginValidations";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 export const SellerLogin = () => {
   const initialValues = {
     email: "",
@@ -12,17 +12,17 @@ export const SellerLogin = () => {
   };
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const loading = useSelector((state) => state?.sellerLoginReducer?.pending);
   useEffect(() => {
     document.body.style.backgroundColor = "rgb(0, 120, 212)";
     if (localStorage.getItem("adminToken")) {
       navigate("/admin");
     }
-  });
-  const onSubmit = (values, submitProps) => {
-    console.log(values);
-    submitProps.setSubmitting(false);
-    submitProps.resetForm();
-    dispatch(sellerLogin(values));
+  }, [loading]);
+  const onSubmit = async (values, submitProps) => {
+    await dispatch(sellerLogin(values));
+    await submitProps.setSubmitting(false);
+    await submitProps.resetForm();
   };
   return (
     <>

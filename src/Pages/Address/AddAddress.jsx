@@ -33,7 +33,6 @@ export const AddAddress = () => {
   const onSubmit = async(values, submitProps) => {
     await axios.post(`https://mean-mole-48.loca.lt/api/create_address`, values)
       .then(res => {
-        console.log(res)
       })
     submitProps.setSubmitting(false);
     submitProps.resetForm();

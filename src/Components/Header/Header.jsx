@@ -1,6 +1,7 @@
 import { Input, Button } from "antd";
 import { Menu, Dropdown } from "antd";
 import { Link } from "react-router-dom";
+import { saveAs } from "file-saver";
 import {
   DownOutlined,
   AudioOutlined,
@@ -31,8 +32,8 @@ export const Headers = () => {
   const [isOpen, setisOpen] = useState(false);
   const [signUpisOpen, setSignUpisOpen] = useState(false);
   const [clear, setClear] = useState(false);
-  const userData = useSelector((state) => state?.userReducer?.userData);
-  const registerUserData = useSelector(
+  const loginUserName = useSelector((state) => state?.userReducer?.userData);
+  const registerUserName = useSelector(
     (state) => state?.userRegisterReducer?.registerData
   );
   const appDispatch = useDispatch();
@@ -56,6 +57,13 @@ export const Headers = () => {
     setSignUpisOpen(SignUpmodalStatus);
   }, [LoginmodalStatus, SignUpmodalStatus]);
   const { Search } = Input;
+  const saveFile = () => {
+    console.log(">>>>>>>>");
+    saveAs(
+      "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "example.pdf"
+    );
+  };
   const loginMenu = (
     <>
       <Menu>
@@ -155,9 +163,9 @@ export const Headers = () => {
         <span className="moreMenu">Advertise</span>
       </Menu.Item>
       <Menu.Divider />
-      <Menu.Item key="7">
+      <Menu.Item key="7" onClick={() => saveFile()}>
         <DownloadOutlined className="moreMenuIcons" />
-        <span className="moreMenu">Download App</span>
+        <span className="moreMenu">Download PDF</span>
       </Menu.Item>
       <Menu.Divider />
       <Menu.Item onClick={() => logOut()} key="8">
@@ -192,15 +200,11 @@ export const Headers = () => {
         <span className="moreMenu">Advertise</span>
       </Menu.Item>
       <Menu.Divider />
-      <Menu.Item key="4">
+      <Menu.Item key="4" onClick={() => saveFile()}>
         <DownloadOutlined className="moreMenuIcons" />
-        <span className="moreMenu">Download App</span>
+        <span className="moreMenu">Download PDF</span>
       </Menu.Item>
       <Menu.Divider />
-      <Menu.Item onClick={() => logOut()} key="5">
-        <LogoutOutlined className="moreMenuIcons" />
-        <span className="moreMenu">Log Out</span>
-      </Menu.Item>
     </Menu>
   );
   const suffix = (
@@ -238,8 +242,8 @@ export const Headers = () => {
               className="ant-dropdown-link More"
               onClick={(e) => e.preventDefault()}
             >
-              {registerUserData.username}
-              {userData.fullName} <DownOutlined />
+              {registerUserName}
+              {loginUserName} <DownOutlined />
             </a>
           </Dropdown>
         ) : (

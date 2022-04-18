@@ -3,7 +3,7 @@ import { Formik, ErrorMessage } from "formik";
 import { Input, Form } from "formik-antd";
 import "./SignupForm.css";
 import { validationSchema } from "./SignUpformValidations";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   openModal,
   signupModal,
@@ -18,6 +18,7 @@ export const SignupForm = () => {
     password: "",
   };
   const dispatch = useDispatch();
+  const loader = useSelector((state) => state.userRegisterReducer.pending);
   const onSubmit = async (values, submitProps) => {
     await dispatch(registerUser(values));
     await submitProps.setSubmitting(false);
@@ -132,6 +133,7 @@ export const SignupForm = () => {
                 type="submit"
                 htmlType="submit"
                 className="login-form-button modalLogin-btn"
+                loading={loader}
               >
                 CONTINUE
               </Button>

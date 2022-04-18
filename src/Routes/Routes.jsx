@@ -2,7 +2,7 @@ import { LoadingOutlined } from "@ant-design/icons";
 import { Spin } from "antd";
 import React, { Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Privateroutes from "./Privateroutes";
+import {PrivateRoute} from "./Privateroutes";
 import { publicRoutes, privateRoutes } from "./RouteType";
 export const Routing = () => {
   const antIcon = (
@@ -13,18 +13,17 @@ export const Routing = () => {
       <Suspense fallback={<Spin indicator={antIcon} />}>
         <Router>
           <Routes>
-            {publicRoutes?.map((route,index) => {
-              return <Route path={route.path} key={index} element={route.element} />;
-            })}
-            {privateRoutes.map((route,index) => {
-              return  <Route
+          {publicRoutes?.map((route,index) => {
+              return  (<Route
                   path={route.path}
                   key={index}
-                  element={
-                    <Privateroutes Component={route.element} />
-                  }
-                />
+                  element={<route.Component/>}
+                />)
             })}
+            {privateRoutes?.map((route,index) => {
+              return (<Route path={route.path} key={index} element= { <PrivateRoute  Component={route.Component} />}/>)
+            })}
+            
           </Routes>
         </Router>
       </Suspense>

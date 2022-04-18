@@ -16,7 +16,6 @@ export const approveSeller = (id) => async (dispatch) => {
       }
     )
     .then(async (res) => {
-      console.log("Admin Action", res);
       await dispatch({ type: APPROVE_PENDING, payload: false });
     })
     .catch(async (error) => {

@@ -10,8 +10,7 @@ export const getsellerList = () => async (dispatch) => {
       headers: { Authorization: `Bearer ${token}` },
     })
     .then(async (res) => {
-      console.log(res);
-      await dispatch({ type: SELLER_LIST, payload: res.data.result });
+      await dispatch({ type: SELLER_LIST, payload: res.data.data });
       await dispatch({ type: FETCH_PENDING, payload: false });
     })
     .catch(async (error) => {

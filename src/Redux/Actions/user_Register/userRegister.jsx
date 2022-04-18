@@ -13,7 +13,7 @@ export const registerUser = (formData) => async (dispatch) => {
     .post(`${BASE_URL}/userSignup`, formData)
     .then(async (res) => {
       localStorage.setItem("userToken", res.data.jwtToken);
-      await dispatch({ type: REGISTER_SUCCESS, payload: res.data.data });
+      await dispatch({ type: REGISTER_SUCCESS, payload: res.data.username });
       await dispatch({ type: REGISTER_PENDING, payload: false });
       await dispatch(signupModal(false));
     })

@@ -4,11 +4,25 @@ import {
   SearchOutlined,
   SettingOutlined,
   BellOutlined,
+  LogoutOutlined
 } from "@ant-design/icons";
-import { Badge } from "antd";
-import { Link } from 'react-router-dom';
+import { Badge, Dropdown, Menu } from "antd";
+import { Link,useNavigate  } from 'react-router-dom';
 import { Header_Btn } from '../Header_Btn/Header_Btn';
 export const Admin_header = () => {
+  const navigate = useNavigate();
+  const settingsMenu = (
+  <Menu>
+        <Menu.Item onClick={() => logOut()} key="1">
+        <LogoutOutlined className="moreMenuIcons" />
+        <span className="moreMenu">Log Out</span>
+      </Menu.Item>
+  </Menu>
+);
+ const logOut = () => {
+    localStorage.clear();
+    navigate('/');
+  };
   return (
     <div>
         <div className="header-container adminHeader">
@@ -31,7 +45,15 @@ export const Admin_header = () => {
             </Badge>
           </div>
           <div>
-            <SettingOutlined className="nav-icon" />
+               <Dropdown
+            overlay={settingsMenu}
+            placement="bottom"
+            arrow={{ pointAtCenter: true }}
+          >
+             <SettingOutlined className="nav-icon" />
+          </Dropdown>
+    
+           
           </div>
           <div>
             <img className="adminImg" src="/images/admin.jpg" />

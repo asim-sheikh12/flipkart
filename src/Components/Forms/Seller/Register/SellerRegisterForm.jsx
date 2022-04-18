@@ -3,24 +3,25 @@ import { sellerRegister } from "../../../../Redux/Actions/sellerActions/sellerRe
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./SellerRegisterForm.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 export const RegisterForm = () => {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
-    phone: "",
+    number: "",
     password: "",
   });
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [val, setVal] = useState("");
+  const loading = useSelector(state=> state.sellerReducer.loading)
 
   useEffect(() => {
     document.body.style.backgroundColor = "rgb(0, 120, 212)";
     if (localStorage.getItem("adminToken")) {
       navigate('/admin')
     }
-  });
+  },[loading]);
   const handleOnChange = (e) => {
     setFormData({
       ...formData,
@@ -28,7 +29,7 @@ export const RegisterForm = () => {
     });
   };
   const handleSubmit = (e) => {
-    formData.phone = val;
+    formData.number = val;
     e.preventDefault();
     if ({ ...formData }) {
       dispatch(sellerRegister(formData));

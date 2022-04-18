@@ -1,21 +1,19 @@
 import axios from "axios";
 import { BASE_URL } from "../../../Components/config/envCongig";
-import { SELLER_REGISTER } from "./sellerRegisterType";
+import { SELLER_REGISTER, SELLER_REGISTER_PENDING } from "./sellerRegisterType";
 export const sellerRegister = (formData) => async (dispatch) => {
-  const { fullName, email, phone, password } = formData;
-
+  const { fullName, email, number, password } = formData;
+  await dispatch({ type: SELLER_REGISTER_PENDING, payload: true });
   await axios
     .post(`${BASE_URL}/api/adminSignup`, {
       fullName,
       email,
-      phone,
+      number,
       password,
     })
-    .then(async(res) => {
-      console.log(res);
-      localStorage.setItem('adminToken',)
-      console.log("Admin Register");
-       await dispatch({ type: SELLER_REGISTER, payload: res });
+    .then(async (res) => {
+      localStorage.setItem("adminToken", res.data.jwtToken);
+      await dispatch({ type: SELLER_REGISTER, payload: res });
+      await dispatch({ type: SELLER_REGISTER_PENDING, payload: false });
     });
-     
 };

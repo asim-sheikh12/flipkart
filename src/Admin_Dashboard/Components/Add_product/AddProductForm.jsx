@@ -14,8 +14,6 @@ export const AddProductForm = () => {
     brand_id: "",
   };
   const onSubmit = async (values, submitProps) => {
-    console.log(values);
-    console.log(submitProps);
     submitProps.setSubmitting(false);
     submitProps.resetForm();
   };

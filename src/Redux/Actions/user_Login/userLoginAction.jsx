@@ -8,8 +8,8 @@ export const loginUser = (formData) => async (dispatch) => {
   await axios
     .post(`${BASE_URL}/userLogin`,formData)
     .then(async(res) => {
-      localStorage.setItem("userToken",res.data.data.token)
-      await dispatch({ type: LOGIN_SUCCESS, payload: res.data.data });
+      localStorage.setItem("userToken",res.data.token)
+      await dispatch({ type: LOGIN_SUCCESS, payload: res.data.userName });
       await dispatch({ type: LOGIN_PENDING, payload: false });
       await dispatch(openModal(false));
     })

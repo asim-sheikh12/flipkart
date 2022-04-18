@@ -35,14 +35,19 @@ export const LoginForm = () => {
   const validate = (values) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+    const mobile = /^[789]\d{9}$/;
     if (!values.email) {
       errors.email = "Please enter valid Email ID/Mobile number!";
-    } else if (!regex.test(values.email)) {
-      errors.email = "This is not a valid email format!";
     }
+    if (!regex.test(values.email)) {
+      errors.email = "Please enter valid Email ID/Mobile number!";
+    }
+    //  if (!mobile.test(values.email)) {
+    //   errors.email = "Please enter valid Email ID/Mobile number!";
+    // }
     if (!values.password) {
       errors.password = "Password is required";
-    } else if (formData.password.length < 4) {
+    } else if (formData.password.length < 8) {
       errors.password = "Password must be more than 4 characters";
     } else if (formData.password.length > 10) {
       errors.password = "Password cannot exceed more than 10 characters";
@@ -102,11 +107,7 @@ export const LoginForm = () => {
               Log in
             </Button>
             <p className="or">OR</p>
-            <Button
-              htmlType="submit"
-              className="login-form-button otp-btn"
-              
-            >
+            <Button htmlType="submit" className="login-form-button otp-btn">
               Request OTP
             </Button>
           </div>

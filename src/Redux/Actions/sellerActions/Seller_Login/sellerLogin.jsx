@@ -7,9 +7,7 @@ export const sellerLogin = (formData) => async (dispatch) => {
   await axios
     .post(`${BASE_URL}/api/adminLogin`,formData)
     .then(async(res) => {
-        console.log(res);
-        console.log("Admin Login");
-      localStorage.setItem('adminToken')
+      localStorage.setItem('adminToken',res.data.token)
       await dispatch({ type: SELLER_LOGIN_SUCCESS, payload: res.data });
       await dispatch({ type: SELLER_LOGIN_PENDING, payload: false });
     })

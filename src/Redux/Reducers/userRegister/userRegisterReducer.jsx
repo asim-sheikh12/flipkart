@@ -13,7 +13,7 @@ const userRegisterReducer = (state = initialState, action) => {
     case REGISTER_SUCCESS:
       return {
         ...state,
-        userData: action.payload,
+        registerData: action.payload,
       };
     case REGISTER_FAILURE:
        state.error = action.payload
